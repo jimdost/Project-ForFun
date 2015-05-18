@@ -15,30 +15,33 @@ import javax.swing.JFrame;
 public class MazeGame {
 
     private static final int aantalhokjes = 20;
+    private static JFrame frame;
 
     public static void main(String[] args) {
         
-         JFrame frame = new JFrame();
+        CreateFrame();
         
-         frame.setSize(500, 500);
-         frame.setTitle("The frame");
-         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         frame.setVisible(true);     
-        
-         JComponent component = new DrawComp();        
-         frame.add(component);
-         
+        JComponent component = new DrawComp();
+        frame.add(component);
 
         //int[][] Maze = CreateMaze();
         //printMaze(Maze);
+    }
 
+    public static void CreateFrame() {
+
+        frame = new DrawFrame();
+
+        frame.setSize(500, 500);
+        frame.setTitle("The frame");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 
     public static int[][] CreateMaze() {
 
         //int[][] Maze = new int[aantalhokjes][aantalhokjes];
         int[][] Maze = {
-            
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1},
