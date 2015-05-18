@@ -21,8 +21,7 @@ public class DrawFrame extends JFrame{
     public DrawFrame(){
         
         panel = new Panel();
-        panel.setSize(200, 400);        
-        
+        panel.setSize(400, 400);       
         
     }
 
