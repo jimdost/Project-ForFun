@@ -18,7 +18,7 @@ public class MazeGame {
     private static JFrame frame;
 
     public static void main(String[] args) {
-        
+        Keyboard keyboard = new Keyboard();
         CreateFrame();
         
         JComponent component = new DrawComp();
