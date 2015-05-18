@@ -18,11 +18,13 @@ public class MazeGame {
     private static JFrame frame;
 
     public static void main(String[] args) {
-        Keyboard keyboard = new Keyboard();
+        KeyboardListener keyboard = new KeyboardListener();
         CreateFrame();
         
-        JComponent component = new DrawComp();
+        JComponent component = new DrawComponent();  
+        
         frame.add(component);
+        frame.addKeyListener(keyboard);
 
         //int[][] Maze = CreateMaze();
         //printMaze(Maze);

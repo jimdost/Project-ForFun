@@ -19,8 +19,8 @@ public class KeyboardListener extends JFrame implements KeyListener {
 
     private static JLabel label;
     
-     public KeyboardListener(String s) {
-        super(s);
+     public KeyboardListener() {
+        super();
         JPanel p = new JPanel();
         label = new JLabel("Key Listener!");
         p.add(label);
@@ -33,35 +33,41 @@ public class KeyboardListener extends JFrame implements KeyListener {
             
     @Override
     public void keyTyped(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            System.out.println("Right key typed");
-        }
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            System.out.println("Left key typed");
-        }
+        
     }
  
     @Override
     public void keyPressed(KeyEvent e) {
        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            System.out.println("Right key pressed");
+            System.out.println("Right");
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            System.out.println("Left key pressed");
+            System.out.println("Lef");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            System.out.println("Up");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            System.out.println("Down");
         }
 
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        /*
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             System.out.println("Right key Released");
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             System.out.println("Left key Released");
         }
+        */
     }
+    
+    
+    
     public static void main(String[] args) {
-        new KeyboardListener("Key Listener Tester");
+        new KeyboardListener();
     }
 }

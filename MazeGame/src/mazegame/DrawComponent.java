@@ -19,11 +19,11 @@ import static mazegame.MazeGame.CreateMaze;
  *
  * @author W.J.Bruinsma
  */
-public class DrawComp extends JPanel{
+public class DrawComponent extends JPanel{
     
     @Override
     protected void paintComponent(Graphics g) {
-        
+                
         int aantalhokjes = 20;
         
         int[][] Maze = CreateMaze();
@@ -42,6 +42,9 @@ public class DrawComp extends JPanel{
                 g.fillRect(rowIndex *21 , colIndex *21, 20, 20);
             }
             System.out.println("");
-        }   
-    }    
+        }  
+    } 
+    
+    
+     
 }
