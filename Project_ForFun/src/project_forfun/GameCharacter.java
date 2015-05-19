@@ -5,12 +5,20 @@
  */
 package project_forfun;
 
+
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Jim
  */
 public class GameCharacter extends Element
 {
+    private int velX;
+    private int velY;
+    
     public void bewegen()
     {
         
@@ -22,5 +30,43 @@ public class GameCharacter extends Element
     public void vuurRaket()
     {
         
+    }
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.fill(new Ellipse2D.Double(0, 0, 15, 15));
+    }
+    public void moveLeft()
+    {
+        velY=0;
+        velX=-4;
+        movePosY(velY);
+        movePosX(velX);
+        repaint();
+    }
+    public void moveRight()
+    {
+        velY=0;
+        velX=4;
+        movePosY(velY);
+        movePosX(velX);
+        repaint();
+    }
+    public void moveUp()
+    {
+        velY=-4;
+        velX=0;
+        movePosY(velY);
+        movePosX(velX);
+        repaint();
+    }
+    public void moveDown()
+    {
+        velY=4;
+        velX=0;
+        movePosY(velY);
+        movePosX(velX);
+        repaint();
     }
 }

@@ -6,31 +6,40 @@
 package project_forfun;
 
 import java.awt.*;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Jim
  */
-public abstract class Element
+public abstract class Element extends JPanel
 {
     private int posX;
     private int posY;
     private Graphics afbeelding;
     
-    public void getPosX()
+    public int getPosX()
     {
-        
+        return posX;
     }
-    public void setPosX()
+    public void setPosX(int newX)
     {
-        
+        posX = newX;
     }
-    public void getPosY()
+    public int getPosY()
     {
-        
+        return posY;
     }
-    public void setPosY()
+    public void setPosY(int newY)
     {
-        
+        posY = newY;
+    }
+    public void movePosX(int newX)
+    {
+        posX += newX;
+    }
+    public void movePosY(int newY)
+    {
+        posY += newY;
     }
 }

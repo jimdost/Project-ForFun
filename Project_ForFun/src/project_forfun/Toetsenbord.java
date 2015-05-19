@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 public class Toetsenbord extends JFrame implements KeyListener
 {
     private static JLabel label;
+    GameCharacter gch= new GameCharacter();
+     
     
     public Toetsenbord()
     {
@@ -41,16 +43,16 @@ public class Toetsenbord extends JFrame implements KeyListener
     public void keyPressed(KeyEvent e)
     {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            System.out.println("Right");
+            gch.moveRight();
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            System.out.println("Lef");
+            gch.moveLeft();
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            System.out.println("Up");
+            gch.moveUp();
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            System.out.println("Down");
+            gch.moveDown();
         }
     }
 
