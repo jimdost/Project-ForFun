@@ -12,7 +12,7 @@ import javax.swing.JPanel;
  *
  * @author Jim
  */
-public abstract class Element extends JPanel
+public class Element extends JPanel
 {
     private int posX;
     private int posY;
@@ -34,12 +34,5 @@ public abstract class Element extends JPanel
     {
         posY = newY;
     }
-    public void movePosX(int newX)
-    {
-        posX += newX;
-    }
-    public void movePosY(int newY)
-    {
-        posY += newY;
-    }
+    
 }

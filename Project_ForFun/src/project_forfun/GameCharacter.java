@@ -7,6 +7,8 @@ package project_forfun;
 
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JPanel;
 
@@ -14,11 +16,18 @@ import javax.swing.JPanel;
  *
  * @author Jim
  */
-public class GameCharacter extends Element
+public class GameCharacter extends Element implements ActionListener
 {
     private int velX;
     private int velY;
+    private int x;
+    private int y;
     
+    
+    public GameCharacter()
+    {
+       
+    }    
     public void bewegen()
     {
         
@@ -43,7 +52,6 @@ public class GameCharacter extends Element
         velX=-4;
         movePosY(velY);
         movePosX(velX);
-        repaint();
     }
     public void moveRight()
     {
@@ -51,7 +59,6 @@ public class GameCharacter extends Element
         velX=4;
         movePosY(velY);
         movePosX(velX);
-        repaint();
     }
     public void moveUp()
     {
@@ -59,7 +66,6 @@ public class GameCharacter extends Element
         velX=0;
         movePosY(velY);
         movePosX(velX);
-        repaint();
     }
     public void moveDown()
     {
@@ -67,6 +73,24 @@ public class GameCharacter extends Element
         velX=0;
         movePosY(velY);
         movePosX(velX);
-        repaint();
     }
+    
+    public void movePosX(int newX)
+    {
+         x = super.getPosX();
+         x += newX;
+    }
+    public void movePosY(int newY)
+    {
+         y = super.getPosY();
+         y += newY;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+         repaint();
+    }
+
+    
 }

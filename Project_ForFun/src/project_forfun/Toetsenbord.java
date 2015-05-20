@@ -17,27 +17,19 @@ import javax.swing.JPanel;
  */
 public class Toetsenbord extends JFrame implements KeyListener
 {
-    private static JLabel label;
-    GameCharacter gch= new GameCharacter();
+    private GameCharacter gch;
      
     
     public Toetsenbord()
     {
         super();
-        JPanel p = new JPanel();
-        label = new JLabel("Key Listener!");
-        p.add(label);
-        add(p);
-        addKeyListener(this);
-        setSize(200, 100);
-        setVisible(true);
+        gch = new GameCharacter();
+        
     }
 
     @Override
     public void keyTyped(KeyEvent e)
-    {
-       
-    }
+    {}
 
     @Override
     public void keyPressed(KeyEvent e)
@@ -58,11 +50,5 @@ public class Toetsenbord extends JFrame implements KeyListener
 
     @Override
     public void keyReleased(KeyEvent e)
-    {
-        
-    }
-    public static void main(String[] args) 
-    {
-        new Toetsenbord();
-    }
+    {}
 }

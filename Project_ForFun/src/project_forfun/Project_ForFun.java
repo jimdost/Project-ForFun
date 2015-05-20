@@ -28,7 +28,7 @@ public class Project_ForFun {
     public static void main(String[] args) {
         createFrame();
         GameCharacter speler = new GameCharacter();
-     Graphics g = null;
+        Graphics g = null;
         speler.paintComponent(g);
     }
     public static void createFrame()
