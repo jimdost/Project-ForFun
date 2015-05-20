@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author Jim
  */
-public class Toetsenbord extends JFrame implements KeyListener
+public class Toetsenbord implements KeyListener
 {
     private GameCharacter gch;
      

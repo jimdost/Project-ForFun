@@ -18,15 +18,13 @@ import javax.swing.JPanel;
  */
 public class GameCharacter extends Element implements ActionListener
 {
-    private int velX;
-    private int velY;
-    private int x;
-    private int y;
-    
+    private int velX, velY , x , y;
+    private Toetsenbord toetsenbord;
     
     public GameCharacter()
     {
-       
+       toetsenbord = new Toetsenbord();
+      
     }    
     public void bewegen()
     {
