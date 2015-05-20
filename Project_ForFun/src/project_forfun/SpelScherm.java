@@ -33,11 +33,11 @@ public class SpelScherm extends JPanel implements ActionListener
         
     }
     
-    public static void createFrame()
+    public void createFrame()
     {
         frame = new JFrame();
         frame.setSize(SIZE_X, SIZE_y);
-        frame.setTitle("Random rectangles and squares");
+        frame.setTitle("Maze For Fun");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add(panel);

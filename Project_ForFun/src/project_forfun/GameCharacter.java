@@ -23,12 +23,12 @@ public class GameCharacter extends Element implements ActionListener
     
     public GameCharacter()
     {
-       toetsenbord = new Toetsenbord();
+       //toetsenbord = new Toetsenbord();
       
     }    
     public void bewegen()
     {
-        
+        toetsenbord = new Toetsenbord();
     }
     public void oppakken()
     {
