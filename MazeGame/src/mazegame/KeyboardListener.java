@@ -42,7 +42,7 @@ public class KeyboardListener extends JFrame implements KeyListener {
             System.out.println("Right");
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            System.out.println("Lef");
+            System.out.println("Left");
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             System.out.println("Up");

@@ -35,7 +35,15 @@ public class DrawComponent extends JPanel{
                 System.out.printf("%2d", Maze[rowIndex][colIndex]);
                 if(Maze[colIndex][rowIndex] == 1){
                     g.setColor(Color.red);
-                }else{
+                }else if (Maze[colIndex][rowIndex] == 3){
+                    g.setColor(Color.cyan);
+                }else if (Maze[colIndex][rowIndex] == 5){
+                    g.setColor(Color.green);
+                }else if (Maze[colIndex][rowIndex] == 8){
+                    g.setColor(Color.lightGray);
+                }else if (Maze[colIndex][rowIndex] == 9){
+                    g.setColor(Color.darkGray);
+                }else if (Maze[colIndex][rowIndex] == 0){
                     g.setColor(Color.blue);
                 }
                 
