@@ -11,6 +11,11 @@ package project_forfun;
  */
 public class Bazooka extends BruikbaarItem
 {
+
+    public Bazooka() {
+        
+    }
+    
     public void geefBazooka()
     {
         
