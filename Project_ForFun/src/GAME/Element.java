@@ -12,15 +12,37 @@ import javax.swing.JComponent;
  * @author wytze
  */
 public abstract class Element extends JComponent {
-    
-    boolean loopbaar;
 
-    public Element() {       
-        
-    } 
-    
-    public boolean getLoopbaar(){
+    private int posX;
+    private int posY;
+    private boolean loopbaar;
+
+    public Element() {
+
+    }
+
+    protected boolean getLoopbaar() {
         return loopbaar;
     }
-    
+
+    protected void setLoopbaar(boolean loopbaar) {
+        this.loopbaar = loopbaar;
+    }
+
+    protected int getPositieX() {
+        return posX;
+    }
+
+    protected int getPositieY() {
+        return posY;
+    }
+
+    protected void setPositieX(int posX) {
+        this.posX = posX;
+    }
+
+    protected void setPositieY(int posY) {
+        this.posY = posY;
+    }
+
 }

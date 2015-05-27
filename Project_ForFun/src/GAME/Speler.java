@@ -17,20 +17,17 @@ import java.awt.Graphics;
 public class Speler extends Element {    
     
     private int tileX ,tileY; 
-    private Keyboard keyboard = new Keyboard();
+    
     
     public Speler(int x, int y)
-    {   
-        keyboard = new Keyboard();
+    { 
         tileX = x;
         tileY = y;
-        loopbaar = true;
+        setLoopbaar(true);
+        getPositieX();
+        getPositieY();
     }   
-    
-    public Keyboard getKeybord(){
-        return keyboard;
-    }
-    
+        
     public int getTileX()
     {
         return tileX;

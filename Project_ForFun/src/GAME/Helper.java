@@ -24,14 +24,14 @@ public class Helper extends Element {
     int VriendX;
     int VriendY;    
 
-    Object[][] daMaze;
+    Element[][] daMaze;
     int mazeSize;
 
-    public Helper() {
-        loopbaar = true;
+    public Helper() {        
+        setLoopbaar(true);        
     }
 
-    public Object[][] solveGame(Object[][] mazeIN, int TileY, int TileX) {
+    public Element[][] solveGame(Element[][] mazeIN, int TileY, int TileX) {
 
         int r, c, x;				/*various counters*/
 
@@ -56,12 +56,12 @@ public class Helper extends Element {
         shortestlength = mazeSize * mazeSize + 1;
         lengthsofar = 0;
 
-        System.out.println("Finding Paths...");
+        //System.out.println("Finding Paths...");
 
         findpath(TileY, TileX, pathsofar, lengthsofar);
 
-        System.out.println("");
-        System.out.println("The shortest path found was the following of length " + shortestlength);
+        //System.out.println("");
+        //System.out.println("The shortest path found was the following of length " + shortestlength);
 
         showmypath(shortestpath, shortestlength);
 
@@ -133,7 +133,7 @@ public class Helper extends Element {
         return false;
     }
 
-    public Object[][] showmypath(int mypath[], int mylength) {
+    public Element[][] showmypath(int mypath[], int mylength) {
         /*this function prints out the maze and the path traveled so
          far.*/
 

@@ -17,7 +17,9 @@ import javax.swing.JPanel;
 public class Muur extends Element {
 
     Muur() {
-        loopbaar = false;        
+        setLoopbaar(false);
+        getPositieX();
+        getPositieY();
     }
 
     @Override
