@@ -15,7 +15,9 @@ import java.awt.Graphics;
 public class Pad extends Element {
 
     Pad() {
-        loopbaar = true;
+        setLoopbaar(true);
+        getPositieX();
+        getPositieY();
     }
     
     @Override

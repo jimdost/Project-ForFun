@@ -5,8 +5,9 @@
  */
 package GAME;
 
-
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /**
  *
@@ -15,10 +16,22 @@ import javax.swing.JFrame;
 public class MAIN {
 
     public static void main(String[] args) {
+
+        JFrame frame = new Frame();
         
-        JFrame frame = new Frame();        
-        frame.setVisible(true);   
+        try {
+            //Set the required look and feel
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            //Update the component tree - associate the look and feel with the given frame.
+            SwingUtilities.updateComponentTreeUI(frame);
+        }//end try
+        catch (Exception e) {
+        }//end catch
+
+        frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+
     }
+
 }

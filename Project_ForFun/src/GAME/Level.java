@@ -18,23 +18,22 @@ import javax.swing.Timer;
  *
  * @author wytze
  */
-public class Level implements ActionListener {
+public class Level{
 
     private int levelNumb = 1;
 
     private JPanel panel;
     private JLabel timer;
-    public Object[][] level;
+    private Element[][] level;
     private int mazeSize;
 
-    private final Speler SPELER;
+    private Speler speler;
     private Element element;
-
-    Timer t = new Timer(1, this);
-    public int time;
+    private Keyboard keyboard = new Keyboard();    
 
     Level(int id) {
-        SPELER = new Speler(20, 20);
+
+        speler = new Speler(20, 20);
         if (id == 1) {
             level = createLevel(Maze1());
         }
@@ -50,22 +49,137 @@ public class Level implements ActionListener {
         DrawLevel();
     }
 
-    public Object[][] GetLevel() {
+    public Keyboard getKeybord() {
+        return keyboard;
+    }
+
+    public Element[][] GetLevel() {
         return level;
     }
 
     public Speler GetSpeler() {
-        return SPELER;
+        return speler;
     }
 
-    private Object[][] Maze1() {
+    private Element[][] createLevel(Element[][] maze) {
+
+        mazeSize = maze.length;
+
+        for (int x = 0; x < mazeSize; x++) {
+            for (int y = 0; y < mazeSize; y++) {
+                if (maze[x][y] instanceof Muur) {
+                    Muur muurCreate = new Muur();
+                    maze[x][y] = muurCreate;
+                } else if (maze[x][y] instanceof Pad) {
+                    Pad padCreate = new Pad();
+                    maze[x][y] = padCreate;
+                } else if (maze[x][y] instanceof Vriend) {
+                    Vriend vriendCreate = new Vriend();
+                    maze[x][y] = vriendCreate;
+                } else if (maze[x][y] instanceof Helper) {
+                    Helper helperCreate = new Helper();
+                    maze[x][y] = helperCreate;
+                }
+
+            }
+        }
+        return maze;
+    }
+
+    public int getMaseSize() {
+        return mazeSize;
+    }
+
+    public void DrawLevel() {
+        {
+            panel = new JPanel();
+            panel.setLayout(null);
+
+            speler.setBounds(speler.getTileX(), speler.getTileY(), 20, 20);
+            panel.add(speler);
+
+            mazeSize = level.length;
+
+            int x = 0;
+            int y = 0;
+
+            for (int i = 0; i < mazeSize; i++) {
+                for (int j = 0; j < mazeSize; j++) {
+
+                    element = (Element) level[i][j];
+                    element.setBounds(x, y, 20, 20);
+                    panel.add(element);
+
+                    x = x + 20;
+                }
+                y = y + 20;
+                x = 0;
+            }
+
+            panel.setBackground(Color.black);
+            panel.repaint();
+            panel.revalidate();
+        }
+    }
+
+    public void ReDrawLevel(Element[][] mazeIN) {
+        {
+            panel.removeAll();
+
+            speler.setBounds(speler.getTileX(), speler.getTileY(), 20, 20);
+            panel.add(speler);
+
+            mazeSize = level.length;
+
+            int x = 0;
+            int y = 0;
+
+            for (int i = 0; i < mazeSize; i++) {
+                for (int j = 0; j < mazeSize; j++) {
+
+                    element = (Element) mazeIN[i][j];
+                    element.setBounds(x, y, 20, 20);
+                    panel.add(element);
+
+                    x = x + 20;
+                }
+                y = y + 20;
+                x = 0;
+            }
+            panel.setBackground(Color.black);
+            panel.repaint();
+        }
+    }
+
+    public JPanel getLevelPanel() {
+        return panel;
+    }
+
+    public void DrawWin() {
+
+        panel.removeAll();
+
+        Rectangle r = panel.getBounds();
+
+        JLabel wintext = new JLabel("JEEEJ!");
+        wintext.setBounds((r.height / 3) , (r.width / 3) , 150, 50);
+        wintext.setFont(new Font("Serif", Font.PLAIN, 50));
+        wintext.setForeground(Color.black);
+        panel.add(wintext);
+        panel.setBackground(Color.red);
+        panel.setFocusable(false);
+
+        panel.repaint();
+    }
+
+    private Element[][] Maze1() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Object[][] Maze = {
+        Element[][] Maze = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m},
@@ -91,14 +205,14 @@ public class Level implements ActionListener {
         return Maze;
     }
 
-    private Object[][] Maze2() {
+    private Element[][] Maze2() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Object[][] Maze = {
+        Element[][] Maze = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
             {m, m, m, p, m, p, m, p, m, m, m, m, m, p, m, p, m, m, m, p, m},
@@ -125,14 +239,14 @@ public class Level implements ActionListener {
         return Maze;
     }
 
-    private Object[][] Maze3() {
+    private Element[][] Maze3() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Object[][] Maze = {
+        Element[][] Maze = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, h, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
@@ -159,14 +273,14 @@ public class Level implements ActionListener {
         return Maze;
     }
 
-    private Object[][] Maze4() {
+    private Element[][] Maze4() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Object[][] Maze = {
+        Element[][] Maze = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, p, p, m, m, m, m, p, p, p, p, p, p, p, p, p, m, p, m, p, p, p, m},
             {m, p, m, m, m, m, p, m, p, m, p, m, m, m, p, m, p, m, m, p, m, p, p, m, p, m, m, m, m, m, m, m, p, m, p, m, p, m, p, m},
@@ -206,144 +320,9 @@ public class Level implements ActionListener {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-            
-        };
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},};
 
         return Maze;
-    }
-
-    private Object[][] createLevel(Object[][] maze) {
-
-        mazeSize = maze.length;
-
-        for (int x = 0; x < mazeSize; x++) {
-            for (int y = 0; y < mazeSize; y++) {
-                if (maze[x][y] instanceof Muur) {
-                    Muur muurCreate = new Muur();
-                    maze[x][y] = muurCreate;
-                } else if (maze[x][y] instanceof Pad) {
-                    Pad padCreate = new Pad();
-                    maze[x][y] = padCreate;
-                } else if (maze[x][y] instanceof Vriend) {
-                    Vriend vriendCreate = new Vriend();
-                    maze[x][y] = vriendCreate;
-                } else if (maze[x][y] instanceof Helper) {
-                    Helper helperCreate = new Helper();
-                    maze[x][y] = helperCreate;
-                }
-
-            }
-        }
-        return maze;
-    }
-
-    public int getMaseSize() {
-        return mazeSize;
-    }
-
-    public void DrawLevel() {
-        {
-            panel = new JPanel();
-            panel.setLayout(null);
-
-            timer = new JLabel("" + time);
-            timer.setBounds(5, 5, 60, 10);
-            timer.setForeground(Color.white);
-            panel.add(timer);
-
-            SPELER.setBounds(SPELER.getTileX(), SPELER.getTileY(), 20, 20);
-            panel.add(SPELER);
-
-            mazeSize = level.length;
-
-            int x = 0;
-            int y = 0;
-
-            for (int i = 0; i < mazeSize; i++) {
-                for (int j = 0; j < mazeSize; j++) {
-
-                    element = (Element) level[i][j];
-                    element.setBounds(x, y, 20, 20);
-                    panel.add(element);
-
-                    x = x + 20;
-                }
-                y = y + 20;
-                x = 0;
-            }
-
-            panel.setBackground(Color.black);
-            panel.repaint();
-            panel.revalidate();
-        }
-    }
-
-    public void ReDrawLevel(Object[][] mazeIN) {
-        {
-            panel.removeAll();
-
-            SPELER.setBounds(SPELER.getTileX(), SPELER.getTileY(), 20, 20);
-            panel.add(SPELER);
-
-            mazeSize = level.length;
-
-            int x = 0;
-            int y = 0;
-
-            for (int i = 0; i < mazeSize; i++) {
-                for (int j = 0; j < mazeSize; j++) {
-
-                    element = (Element) mazeIN[i][j];
-                    element.setBounds(x, y, 20, 20);
-                    panel.add(element);
-
-                    x = x + 20;
-                }
-                y = y + 20;
-                x = 0;
-            }
-            panel.setBackground(Color.black);
-            panel.repaint();
-        }
-    }
-
-    public JPanel getLevelPanel() {
-        return panel;
-    }
-
-    public boolean showNextButton = false;
-
-    public void DrawWin() {
-
-        panel.removeAll();
-
-        Rectangle r = panel.getBounds();
-
-        JLabel wintext = new JLabel("JEEEJ!");
-        wintext.setBounds((r.height / 2) - 75, (r.width / 2) - 50, 150, 50);
-        wintext.setFont(new Font("Serif", Font.PLAIN, 50));
-        wintext.setForeground(Color.black);
-        panel.add(wintext);
-        panel.setBackground(Color.red);
-        panel.setFocusable(false);
-
-        panel.repaint();
-    }
-
-    public boolean getShowNextButton() {
-        return showNextButton;
-    }
-
-    public void setShowNextButton(boolean showNextButton) {
-        showNextButton = true;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        time++;
-        timer.repaint();
-
     }
 
 }

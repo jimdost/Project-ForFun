@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,7 +22,7 @@ public class Frame extends JFrame implements ActionListener{
 
     private JPanel north;
 
-    private Keyboard KEYBOARD;
+    private Keyboard keyboard;
 
     private int levelNumb = 1;
     private Speler speler;
@@ -37,15 +36,15 @@ public class Frame extends JFrame implements ActionListener{
         label.setForeground(Color.WHITE);
 
         JButton resetButton = new JButton("Reset");
-        resetButton.setBackground(Color.RED);
+        resetButton.setBackground(Color.blue);
         resetButton.setFocusable(false);
-        resetButton.setForeground(Color.WHITE);
+        //resetButton.setForeground(Color.WHITE);
         resetButton.addActionListener(this);
 
         JButton nextlevel = new JButton("next");
-        nextlevel.setBackground(Color.RED);
+        nextlevel.setBackground(Color.blue);
         nextlevel.setFocusable(false);
-        nextlevel.setForeground(Color.WHITE);
+        //nextlevel.setForeground(Color.WHITE);
         nextlevel.addActionListener(this);
 
         north.add(label);
@@ -66,12 +65,11 @@ public class Frame extends JFrame implements ActionListener{
         level = new Level(levelNumb);
 
         speler = level.GetSpeler();
-        KEYBOARD = speler.getKeybord();
-        addKeyListener(KEYBOARD);
+        keyboard = level.getKeybord();        
+        addKeyListener(keyboard);
         setFocusable(true);
-
-        KEYBOARD.speler = speler;
-        KEYBOARD.level = level;
+        keyboard.speler = speler;
+        keyboard.level = level;
 
         getContentPane().add(level.getLevelPanel(), BorderLayout.CENTER);
         getContentPane().revalidate();

@@ -17,7 +17,7 @@ public class Keyboard implements KeyListener {
     public Level level;
     public Element element;
     public Speler speler;
-    private Object[][] Maze;
+    private Element[][] Maze;
     private int TileX, TileY;
 
     public void keyTyped(KeyEvent e) {

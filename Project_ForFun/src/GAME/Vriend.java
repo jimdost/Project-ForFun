@@ -15,7 +15,9 @@ import java.awt.Graphics;
 public class Vriend extends Element {
 
     Vriend() {
-        loopbaar = true;
+        setLoopbaar(true);
+        getPositieX();
+        getPositieY();
     }
 
     @Override
