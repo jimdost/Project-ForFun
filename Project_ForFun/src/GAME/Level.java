@@ -35,16 +35,16 @@ public class Level{
 
         speler = new Speler(20, 20);
         if (id == 1) {
-            level = createLevel(Maze1());
+            level = createLevel(TempMazeDrawing1());
         }
         if (id == 2) {
-            level = createLevel(Maze2());
+            level = createLevel(TempMazeDrawing2());
         }
         if (id == 3) {
-            level = createLevel(Maze3());
+            level = createLevel(TempMazeDrawing3());
         }
         if (id == 4) {
-            level = createLevel(Maze4());
+            level = createLevel(TempMazeDrwing4());
         }
         DrawLevel();
     }
@@ -172,14 +172,14 @@ public class Level{
         panel.repaint();
     }
 
-    private Element[][] Maze1() {
+    private Element[][] TempMazeDrawing1() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Element[][] Maze = {
+        Element[][] mazeDrawing = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m},
@@ -202,17 +202,17 @@ public class Level{
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return Maze;
+        return mazeDrawing;
     }
 
-    private Element[][] Maze2() {
+    private Element[][] TempMazeDrawing2() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Element[][] Maze = {
+        Element[][] mazeDrawing = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
             {m, m, m, p, m, p, m, p, m, m, m, m, m, p, m, p, m, m, m, p, m},
@@ -236,44 +236,44 @@ public class Level{
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return Maze;
+        return mazeDrawing;
     }
 
-    private Element[][] Maze3() {
+    private Element[][] TempMazeDrawing3() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Element[][] Maze = {
+        Element[][] mazeDrawing = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-            {m, p, h, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
-            {m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m, p, m},
-            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
-            {m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m, p, m},
-            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
-            {m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
-            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, v, m},
+            {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, m},
+            {m, p, m, m, m, p, m, m, m, m, p, p, p, m, m, m, p, p, p, m, m},
+            {m, p, p, m, p, p, p, p, p, m, m, m, m, m, p, m, p, m, m, m, m},
+            {m, m, p, m, m, m, m, m, p, p, p, m, p, p, p, m, p, m, p, p, m},
+            {m, p, p, p, m, p, m, p, p, m, p, m, m, p, m, m, p, m, m, p, m},
+            {m, p, m, m, m, p, m, m, m, m, p, p, p, p, m, p, p, m, p, p, m},
+            {m, p, m, p, p, p, m, p, p, m, p, m, p, m, m, p, m, m, p, m, m},
+            {m, p, m, p, m, m, m, p, m, m, p, m, p, p, m, p, p, p, p, p, m},
+            {m, p, p, p, m, p, m, p, p, p, p, m, p, m, m, m, m, m, p, m, m},
+            {m, m, m, p, m, p, p, p, m, p, m, m, m, m, p, p, p, p, p, m, m},
+            {m, p, m, p, m, m, p, m, m, p, m, p, p, p, p, m, m, m, p, p, m},
+            {m, p, m, p, p, p, p, m, p, p, m, p, m, m, m, m, p, m, m, p, m},
+            {m, p, p, p, m, m, m, m, p, m, m, p, m, p, p, p, p, p, m, p, m},
+            {m, m, m, m, m, p, p, p, p, p, m, p, m, p, m, p, m, p, p, p, m},
+            {m, p, p, m, m, p, m, m, m, h, p, p, m, p, m, m, m, m, m, p, m},
+            {m, p, m, m, p, p, m, p, m, p, m, p, m, p, m, p, p, p, m, p, m},
+            {m, p, p, m, p, m, m, p, m, p, m, m, m, p, p, p, m, p, m, p, m},
+            {m, m, p, p, p, m, p, p, p, p, p, m, m, m, m, m, m, p, m, p, m},
+            {m, p, p, m, p, p, p, m, p, m, p, p, p, p, p, p, p, p, m, v, m},
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return Maze;
+        return mazeDrawing;
     }
 
-    private Element[][] Maze4() {
+    private Element[][] TempMazeDrwing4() {
 
         Muur m = new Muur();
         Pad p = new Pad();
