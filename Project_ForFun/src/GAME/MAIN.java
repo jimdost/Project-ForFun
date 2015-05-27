@@ -17,16 +17,15 @@ public class MAIN {
 
     public static void main(String[] args) {
 
-        JFrame frame = new Frame();
-        
+        JFrame frame = new Frame();        
         try {
             //Set the required look and feel
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             //Update the component tree - associate the look and feel with the given frame.
             SwingUtilities.updateComponentTreeUI(frame);
-        }//end try
+        }
         catch (Exception e) {
-        }//end catch
+        }
 
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

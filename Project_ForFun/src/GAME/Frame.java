@@ -32,19 +32,17 @@ public class Frame extends JFrame implements ActionListener{
 
     Frame() {
         north = new JPanel();
-        JLabel label = new JLabel("hallo                                 ");
+        JLabel label = new JLabel("The Maze Game                                 ");
         label.setForeground(Color.WHITE);
 
         JButton resetButton = new JButton("Reset");
         resetButton.setBackground(Color.blue);
-        resetButton.setFocusable(false);
-        //resetButton.setForeground(Color.WHITE);
+        resetButton.setFocusable(false);        
         resetButton.addActionListener(this);
 
         JButton nextlevel = new JButton("next");
         nextlevel.setBackground(Color.blue);
-        nextlevel.setFocusable(false);
-        //nextlevel.setForeground(Color.WHITE);
+        nextlevel.setFocusable(false);        
         nextlevel.addActionListener(this);
 
         north.add(label);
@@ -99,6 +97,5 @@ public class Frame extends JFrame implements ActionListener{
 
             createComponents();
         }
-
     }
 }

@@ -18,7 +18,7 @@ import javax.swing.Timer;
  *
  * @author wytze
  */
-public class Level{
+public class Level {
 
     private int levelNumb = 1;
 
@@ -29,7 +29,7 @@ public class Level{
 
     private Speler speler;
     private Element element;
-    private Keyboard keyboard = new Keyboard();    
+    private Keyboard keyboard = new Keyboard();
 
     Level(int id) {
 
@@ -61,33 +61,43 @@ public class Level{
         return speler;
     }
 
-    private Element[][] createLevel(Element[][] maze) {
+    public JPanel getLevelPanel() {
+        return panel;
+    }
 
+    public int getMaseSize() {
+        return mazeSize;
+    }
+
+    private Element[][] createLevel(Element[][] maze) {
         mazeSize = maze.length;
 
         for (int x = 0; x < mazeSize; x++) {
             for (int y = 0; y < mazeSize; y++) {
                 if (maze[x][y] instanceof Muur) {
                     Muur muurCreate = new Muur();
+                    muurCreate.setPositieX(x);
+                    muurCreate.setPositieX(y);
                     maze[x][y] = muurCreate;
                 } else if (maze[x][y] instanceof Pad) {
                     Pad padCreate = new Pad();
+                    padCreate.setPositieX(x);
+                    padCreate.setPositieX(y);
                     maze[x][y] = padCreate;
                 } else if (maze[x][y] instanceof Vriend) {
                     Vriend vriendCreate = new Vriend();
+                    vriendCreate.setPositieX(x);
+                    vriendCreate.setPositieX(y);
                     maze[x][y] = vriendCreate;
                 } else if (maze[x][y] instanceof Helper) {
                     Helper helperCreate = new Helper();
+                    helperCreate.setPositieX(x);
+                    helperCreate.setPositieX(y);
                     maze[x][y] = helperCreate;
                 }
-
             }
         }
         return maze;
-    }
-
-    public int getMaseSize() {
-        return mazeSize;
     }
 
     public void DrawLevel() {
@@ -151,10 +161,6 @@ public class Level{
         }
     }
 
-    public JPanel getLevelPanel() {
-        return panel;
-    }
-
     public void DrawWin() {
 
         panel.removeAll();
@@ -162,7 +168,7 @@ public class Level{
         Rectangle r = panel.getBounds();
 
         JLabel wintext = new JLabel("JEEEJ!");
-        wintext.setBounds((r.height / 3) , (r.width / 3) , 150, 50);
+        wintext.setBounds((r.height / 3), (r.width / 3), 150, 50);
         wintext.setFont(new Font("Serif", Font.PLAIN, 50));
         wintext.setForeground(Color.black);
         panel.add(wintext);

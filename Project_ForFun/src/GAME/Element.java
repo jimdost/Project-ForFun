@@ -15,18 +15,11 @@ public abstract class Element extends JComponent {
 
     private int posX;
     private int posY;
+    protected final int ELEMENT_SIZE;
     private boolean loopbaar;
 
     public Element() {
-
-    }
-
-    protected boolean getLoopbaar() {
-        return loopbaar;
-    }
-
-    protected void setLoopbaar(boolean loopbaar) {
-        this.loopbaar = loopbaar;
+        this.ELEMENT_SIZE = 20;
     }
 
     protected int getPositieX() {
@@ -45,4 +38,11 @@ public abstract class Element extends JComponent {
         this.posY = posY;
     }
 
+    protected boolean getLoopbaar() {
+        return loopbaar;
+    }
+
+    protected void setLoopbaar(boolean loopbaar) {
+        this.loopbaar = loopbaar;
+    }
 }

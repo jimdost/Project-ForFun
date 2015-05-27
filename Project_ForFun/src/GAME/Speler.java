@@ -18,7 +18,6 @@ public class Speler extends Element {
     
     private int tileX ,tileY; 
     
-    
     public Speler(int x, int y)
     { 
         tileX = x;
@@ -41,7 +40,7 @@ public class Speler extends Element {
     public void move(int dx, int dy){        
         tileX = tileX + dx;
         tileY = tileY + dy; 
-        setBounds(tileX, tileY, 20, 20);
+        setBounds(tileX, tileY, ELEMENT_SIZE , ELEMENT_SIZE);
     }
     
     @Override
