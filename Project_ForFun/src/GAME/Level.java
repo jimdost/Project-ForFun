@@ -65,7 +65,7 @@ public class Level implements ActionListener {
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Object[][] Maze = {
+        Object[][] Maze = { //Maze moet van elementen worden.
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m},
