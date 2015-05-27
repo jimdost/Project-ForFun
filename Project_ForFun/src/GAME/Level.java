@@ -179,11 +179,7 @@ public class Level{
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-<<<<<<< HEAD
-        Object[][] Maze = { //Maze moet van elementen worden.
-=======
         Element[][] Maze = {
->>>>>>> origin/master
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m},
