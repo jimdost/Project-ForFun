@@ -25,6 +25,7 @@ public class Level {
     private JPanel panel;
     private JLabel timer;
     private Element[][] level;
+    int ELEMENT_SIZE;
     private int mazeSize;
 
     private Speler speler;
@@ -32,19 +33,20 @@ public class Level {
     private Keyboard keyboard = new Keyboard();
 
     Level(int id) {
+         ELEMENT_SIZE = 20;
 
-        speler = new Speler(20, 20);
+        speler = new Speler(ELEMENT_SIZE, ELEMENT_SIZE);
         if (id == 1) {
-            level = createLevel(TempMazeDrawing1());
+            level = createLevel(Maze1());
         }
         if (id == 2) {
-            level = createLevel(TempMazeDrawing2());
+            level = createLevel(Maze2());
         }
         if (id == 3) {
-            level = createLevel(TempMazeDrawing3());
+            level = createLevel(Maze3());
         }
         if (id == 4) {
-            level = createLevel(TempMazeDrwing4());
+            level = createLevel(Maze4());
         }
         DrawLevel();
     }
@@ -105,7 +107,7 @@ public class Level {
             panel = new JPanel();
             panel.setLayout(null);
 
-            speler.setBounds(speler.getTileX(), speler.getTileY(), 20, 20);
+            speler.setBounds(speler.getTileX(), speler.getTileY(), ELEMENT_SIZE, ELEMENT_SIZE);
             panel.add(speler);
 
             mazeSize = level.length;
@@ -117,12 +119,12 @@ public class Level {
                 for (int j = 0; j < mazeSize; j++) {
 
                     element = (Element) level[i][j];
-                    element.setBounds(x, y, 20, 20);
+                    element.setBounds(x, y, ELEMENT_SIZE, ELEMENT_SIZE);
                     panel.add(element);
 
-                    x = x + 20;
+                    x = x + ELEMENT_SIZE;
                 }
-                y = y + 20;
+                y = y + ELEMENT_SIZE;
                 x = 0;
             }
 
@@ -136,7 +138,7 @@ public class Level {
         {
             panel.removeAll();
 
-            speler.setBounds(speler.getTileX(), speler.getTileY(), 20, 20);
+            speler.setBounds(speler.getTileX(), speler.getTileY(), ELEMENT_SIZE, ELEMENT_SIZE);
             panel.add(speler);
 
             mazeSize = level.length;
@@ -148,12 +150,12 @@ public class Level {
                 for (int j = 0; j < mazeSize; j++) {
 
                     element = (Element) mazeIN[i][j];
-                    element.setBounds(x, y, 20, 20);
+                    element.setBounds(x, y, ELEMENT_SIZE, ELEMENT_SIZE);
                     panel.add(element);
 
-                    x = x + 20;
+                    x = x + ELEMENT_SIZE;
                 }
-                y = y + 20;
+                y = y + ELEMENT_SIZE;
                 x = 0;
             }
             panel.setBackground(Color.black);
@@ -178,14 +180,14 @@ public class Level {
         panel.repaint();
     }
 
-    private Element[][] TempMazeDrawing1() {
+    private Element[][] Maze1() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Element[][] mazeDrawing = {
+        Element[][] Maze = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m},
@@ -208,17 +210,17 @@ public class Level {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return mazeDrawing;
+        return Maze;
     }
 
-    private Element[][] TempMazeDrawing2() {
+    private Element[][] Maze2() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Element[][] mazeDrawing = {
+        Element[][] Maze = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
             {m, m, m, p, m, p, m, p, m, m, m, m, m, p, m, p, m, m, m, p, m},
@@ -242,44 +244,44 @@ public class Level {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return mazeDrawing;
+        return Maze;
     }
 
-    private Element[][] TempMazeDrawing3() {
+    private Element[][] Maze3() {
 
         Muur m = new Muur();
         Pad p = new Pad();
         Vriend v = new Vriend();
         Helper h = new Helper();
 
-        Element[][] mazeDrawing = {
+        Element[][] Maze = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-            {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, m},
-            {m, p, m, m, m, p, m, m, m, m, p, p, p, m, m, m, p, p, p, m, m},
-            {m, p, p, m, p, p, p, p, p, m, m, m, m, m, p, m, p, m, m, m, m},
-            {m, m, p, m, m, m, m, m, p, p, p, m, p, p, p, m, p, m, p, p, m},
-            {m, p, p, p, m, p, m, p, p, m, p, m, m, p, m, m, p, m, m, p, m},
-            {m, p, m, m, m, p, m, m, m, m, p, p, p, p, m, p, p, m, p, p, m},
-            {m, p, m, p, p, p, m, p, p, m, p, m, p, m, m, p, m, m, p, m, m},
-            {m, p, m, p, m, m, m, p, m, m, p, m, p, p, m, p, p, p, p, p, m},
-            {m, p, p, p, m, p, m, p, p, p, p, m, p, m, m, m, m, m, p, m, m},
-            {m, m, m, p, m, p, p, p, m, p, m, m, m, m, p, p, p, p, p, m, m},
-            {m, p, m, p, m, m, p, m, m, p, m, p, p, p, p, m, m, m, p, p, m},
-            {m, p, m, p, p, p, p, m, p, p, m, p, m, m, m, m, p, m, m, p, m},
-            {m, p, p, p, m, m, m, m, p, m, m, p, m, p, p, p, p, p, m, p, m},
-            {m, m, m, m, m, p, p, p, p, p, m, p, m, p, m, p, m, p, p, p, m},
-            {m, p, p, m, m, p, m, m, m, h, p, p, m, p, m, m, m, m, m, p, m},
-            {m, p, m, m, p, p, m, p, m, p, m, p, m, p, m, p, p, p, m, p, m},
-            {m, p, p, m, p, m, m, p, m, p, m, m, m, p, p, p, m, p, m, p, m},
-            {m, m, p, p, p, m, p, p, p, p, p, m, m, m, m, m, m, p, m, p, m},
-            {m, p, p, m, p, p, p, m, p, m, p, p, p, p, p, p, p, p, m, v, m},
+            {m, p, h, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
+            {m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m, p, m},
+            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
+            {m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m, p, m},
+            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
+            {m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
+            {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, v, m},
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return mazeDrawing;
+        return Maze;
     }
 
-    private Element[][] TempMazeDrwing4() {
+    private Element[][] Maze4() {
 
         Muur m = new Muur();
         Pad p = new Pad();

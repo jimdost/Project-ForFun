@@ -45,4 +45,8 @@ public abstract class Element extends JComponent {
     protected void setLoopbaar(boolean loopbaar) {
         this.loopbaar = loopbaar;
     }
+    
+    protected int getElementSize(){
+        return ELEMENT_SIZE;
+    }
 }

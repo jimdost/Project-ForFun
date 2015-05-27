@@ -35,16 +35,20 @@ public class Keyboard implements KeyListener {
 
         if (keycode == KeyEvent.VK_W) {
             element = (Element) Maze[TileY - 1][TileX];
-          
+
             if (element.getLoopbaar() == true) {
                 speler.move(0, -20);
+                System.out.println("Y  " + element.getPositieY());
+                System.out.println("X  " + element.getPositieX());
             }
         }
         if (keycode == KeyEvent.VK_S) {
             element = (Element) Maze[TileY + 1][TileX];
-            
+
             if (element.getLoopbaar() == true) {
                 speler.move(0, 20);
+                System.out.println("Y  " + element.getPositieY());
+                System.out.println("X  " + element.getPositieX());
             }
         }
         if (keycode == KeyEvent.VK_A) {
@@ -52,13 +56,17 @@ public class Keyboard implements KeyListener {
 
             if (element.getLoopbaar() == true) {
                 speler.move(-20, 0);
+                System.out.println("Y  " + element.getPositieY());
+                System.out.println("X  " + element.getPositieX());
             }
         }
         if (keycode == KeyEvent.VK_D) {
             element = (Element) Maze[TileY][TileX + 1];
-            
+
             if (element.getLoopbaar() == true) {
                 speler.move(20, 0);
+                System.out.println("Y  " + element.getPositieY());
+                System.out.println("X  " + element.getPositieX());
             }
         }
 
@@ -74,8 +82,8 @@ public class Keyboard implements KeyListener {
         }
 
         if (Maze[TileY][TileX] instanceof Helper) {
-            Helper helper = (Helper) Maze[TileY][TileX];           
-            level.ReDrawLevel(helper.solveGame(Maze , TileY, TileX ));  
+            Helper helper = (Helper) Maze[TileY][TileX];
+            level.ReDrawLevel(helper.solveGame(Maze, TileY, TileX));
         }
     }
 
