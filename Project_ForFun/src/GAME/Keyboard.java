@@ -34,40 +34,44 @@ public class Keyboard implements KeyListener {
         int keycode = e.getKeyCode();
 
         if (keycode == KeyEvent.VK_W) {
-            element = (Element) Maze[TileY - 1][TileX];
+            speler.moveUp();
+            /*element = (Element) Maze[TileY - 1][TileX];
 
             if (element.getLoopbaar() == true) {
                 speler.move(0, -20);
                 System.out.println("Y  " + element.getPositieY());
                 System.out.println("X  " + element.getPositieX());
-            }
+            }*/
         }
         if (keycode == KeyEvent.VK_S) {
-            element = (Element) Maze[TileY + 1][TileX];
+            speler.moveDown();
+            /*element = (Element) Maze[TileY + 1][TileX];
 
             if (element.getLoopbaar() == true) {
                 speler.move(0, 20);
                 System.out.println("Y  " + element.getPositieY());
                 System.out.println("X  " + element.getPositieX());
-            }
+            }*/
         }
         if (keycode == KeyEvent.VK_A) {
-            element = (Element) Maze[TileY][TileX - 1];
+            speler.moveLeft();
+            /*element = (Element) Maze[TileY][TileX - 1];
 
             if (element.getLoopbaar() == true) {
                 speler.move(-20, 0);
                 System.out.println("Y  " + element.getPositieY());
                 System.out.println("X  " + element.getPositieX());
-            }
+            }*/
         }
         if (keycode == KeyEvent.VK_D) {
-            element = (Element) Maze[TileY][TileX + 1];
+            speler.moveRight();
+            /*element = (Element) Maze[TileY][TileX + 1];
 
             if (element.getLoopbaar() == true) {
                 speler.move(20, 0);
                 System.out.println("Y  " + element.getPositieY());
                 System.out.println("X  " + element.getPositieX());
-            }
+            }*/
         }
 
     }

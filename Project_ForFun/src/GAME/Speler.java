@@ -17,6 +17,10 @@ import java.awt.Graphics;
 public class Speler extends Element {    
     
     private int tileX ,tileY; 
+    protected Element element;
+    protected Level level;
+    protected Speler speler;
+    private Element[][] maze;
     
     public Speler(int x, int y)
     { 
@@ -51,5 +55,45 @@ public class Speler extends Element {
         g.setColor(Color.yellow);
         g.fillOval(2, 2, 16, 16);       
         
+    }
+
+    void moveUp() {
+        element = (Element) maze[tileY - 1][tileX];
+
+            if (element.getLoopbaar() == true) {
+                speler.move(0, -20);
+                System.out.println("Y  " + element.getPositieY());
+                System.out.println("X  " + element.getPositieX());
+            }
+    }
+
+    void moveDown() {
+        element = (Element) maze[tileY + 1][tileX];
+
+            if (element.getLoopbaar() == true) {
+                speler.move(0, 20);
+                System.out.println("Y  " + element.getPositieY());
+                System.out.println("X  " + element.getPositieX());
+            }
+    }
+
+    void moveLeft() {
+        element = (Element) maze[tileY][tileX - 1];
+
+            if (element.getLoopbaar() == true) {
+                speler.move(-20, 0);
+                System.out.println("Y  " + element.getPositieY());
+                System.out.println("X  " + element.getPositieX());
+            }
+    }
+
+    void moveRight() {
+        element = (Element) maze[tileY][tileX + 1];
+
+            if (element.getLoopbaar() == true) {
+                speler.move(20, 0);
+                System.out.println("Y  " + element.getPositieY());
+                System.out.println("X  " + element.getPositieX());
+            }
     }
 }

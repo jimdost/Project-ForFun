@@ -66,8 +66,8 @@ public class Frame extends JFrame implements ActionListener{
         keyboard = level.getKeybord();        
         addKeyListener(keyboard);
         setFocusable(true);
-        keyboard.speler = speler;
-        keyboard.level = level;
+        speler.speler = speler;
+        speler.level = level;
 
         getContentPane().add(level.getLevelPanel(), BorderLayout.CENTER);
         getContentPane().revalidate();
