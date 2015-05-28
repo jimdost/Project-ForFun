@@ -32,5 +32,4 @@ public class MAIN {
         frame.setResizable(false);
 
     }
-
 }

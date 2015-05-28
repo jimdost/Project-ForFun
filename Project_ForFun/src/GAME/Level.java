@@ -33,7 +33,7 @@ public class Level {
     private Keyboard keyboard = new Keyboard();
 
     Level(int id) {
-         ELEMENT_SIZE = 20;
+        ELEMENT_SIZE = 20;
 
         speler = new Speler(ELEMENT_SIZE, ELEMENT_SIZE);
         if (id == 1) {
@@ -73,30 +73,34 @@ public class Level {
 
     private Element[][] createLevel(Element[][] maze) {
         mazeSize = maze.length;
+        Muur muurCreate;
+        Pad padCreate;
+        Vriend vriendCreate;
+        Helper helperCreate;
 
         for (int x = 0; x < mazeSize; x++) {
             for (int y = 0; y < mazeSize; y++) {
                 if (maze[x][y] instanceof Muur) {
-                    Muur muurCreate = new Muur();
+                    muurCreate = new Muur();
                     muurCreate.setPositieX(x);
-                    muurCreate.setPositieX(y);
                     maze[x][y] = muurCreate;
                 } else if (maze[x][y] instanceof Pad) {
-                    Pad padCreate = new Pad();
+                    padCreate = new Pad();
                     padCreate.setPositieX(x);
-                    padCreate.setPositieX(y);
                     maze[x][y] = padCreate;
                 } else if (maze[x][y] instanceof Vriend) {
-                    Vriend vriendCreate = new Vriend();
+                    vriendCreate = new Vriend();
                     vriendCreate.setPositieX(x);
-                    vriendCreate.setPositieX(y);
                     maze[x][y] = vriendCreate;
                 } else if (maze[x][y] instanceof Helper) {
-                    Helper helperCreate = new Helper();
+                    helperCreate = new Helper();
                     helperCreate.setPositieX(x);
-                    helperCreate.setPositieX(y);
                     maze[x][y] = helperCreate;
                 }
+                //muurCreate.setPositieY(y);
+                //padCreate.setPositieY(y);
+                //vriendCreate.setPositieY(y);
+                //helperCreate.setPositieX(y);
             }
         }
         return maze;
@@ -117,11 +121,9 @@ public class Level {
 
             for (int i = 0; i < mazeSize; i++) {
                 for (int j = 0; j < mazeSize; j++) {
-
                     element = (Element) level[i][j];
                     element.setBounds(x, y, ELEMENT_SIZE, ELEMENT_SIZE);
                     panel.add(element);
-
                     x = x + ELEMENT_SIZE;
                 }
                 y = y + ELEMENT_SIZE;
@@ -188,6 +190,7 @@ public class Level {
         Helper h = new Helper();
 
         Element[][] Maze = {
+            
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m},

@@ -46,7 +46,7 @@ public class Speler extends Element {
     @Override
     public void paintComponent(Graphics g) {
     
-        super.paintComponent(g);        
+        super.paintComponent(g);      
         
         g.setColor(Color.yellow);
         g.fillOval(2, 2, 16, 16);       
