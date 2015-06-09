@@ -16,8 +16,6 @@ public class Vriend extends Element {
 
     Vriend() {
         setLoopbaar(true);
-        getPositieX();
-        getPositieY();
     }
 
     @Override

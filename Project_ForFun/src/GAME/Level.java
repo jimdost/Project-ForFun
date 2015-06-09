@@ -6,13 +6,9 @@
 package GAME;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JLabel;
+import java.util.ArrayList;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
  *
@@ -20,168 +16,90 @@ import javax.swing.Timer;
  */
 public class Level {
 
-    private int levelNumb = 1;
-
-    private JPanel panel;
-    private JLabel timer;
-    private Element[][] level;
-    int ELEMENT_SIZE;
-    private int mazeSize;
-
+    private ArrayList<String[][]> mazeList;
+    private static final int VELDSIZE = 20;
+    private Veld[][] bord;
     private Speler speler;
-    private Element element;
-    private Keyboard keyboard = new Keyboard();
 
-    Level(int id) {
-        ELEMENT_SIZE = 20;
-
-        speler = new Speler(ELEMENT_SIZE, ELEMENT_SIZE);
-        if (id == 1) {
-            level = createLevel(Maze1());
-        }
-        if (id == 2) {
-            level = createLevel(Maze2());
-        }
-        if (id == 3) {
-            level = createLevel(Maze3());
-        }
-        if (id == 4) {
-            level = createLevel(Maze4());
-        }
-        DrawLevel();
+    public Level() {
+        getMazes();
+        MazeToBord();
     }
 
-    public Keyboard getKeybord() {
-        return keyboard;
+    private Veld[][] MazeToBord() {
+
+        String[][] levelOpzet = mazeList.get(0);
+        bord = new Veld[levelOpzet.length][levelOpzet.length];
+
+        for (int x = 0; x < levelOpzet.length; x++) {
+            for (int y = 0; y < levelOpzet.length; y++) {
+                Veld v;
+                switch (levelOpzet[x][y]) {
+                    case "m":
+                        Muur muurCreate = new Muur();
+                        v = new Veld(muurCreate);
+                        v.setPositieX(y);
+                        v.setPositieY(x);
+                        muurCreate.setVeld(v);
+                        bord[x][y] = v;
+                        break;
+                    case "v":
+                        Vriend vriendCreate = new Vriend();
+                        v = new Veld(vriendCreate);
+                        v.setPositieX(y);
+                        v.setPositieY(x);
+                        vriendCreate.setVeld(v);
+                        bord[x][y] = v;
+                        break;
+                    case "h":
+                        Helper helperCreate = new Helper();
+                        v = new Veld(helperCreate);
+                        v.setPositieX(y);
+                        v.setPositieY(x);
+                        helperCreate.setVeld(v);
+                        bord[x][y] = v;
+                        break;
+                    case "s":
+                        speler = new Speler();                        
+                        v = new Veld(speler);
+                        v.setPositieX(y);
+                        v.setPositieY(x); 
+                        speler.setVeld(v);
+                        speler.bord = bord;
+                        bord[x][y] = v;
+                        break;
+                }
+            }
+        }
+        return bord;
     }
 
-    public Element[][] GetLevel() {
-        return level;
+    public Veld[][] getBord() {
+        return bord;
     }
 
-    public Speler GetSpeler() {
+    public int getVeltSize() {
+        return VELDSIZE;
+    }
+
+    public Speler getSpeler() {
         return speler;
     }
 
-    public JPanel getLevelPanel() {
-        return panel;
-    }
+    private void getMazes() {
 
-    public int getMaseSize() {
-        return mazeSize;
-    }
+        mazeList = new ArrayList<>();
 
-    private Element[][] createLevel(Element[][] maze) {
-        mazeSize = maze.length;
-        Muur muurCreate;
-        Pad padCreate;
-        Vriend vriendCreate;
-        Helper helperCreate;
+        String s = "s";
+        String m = "m";
+        String p = "p";
+        String v = "v";
+        String h = "h";
 
-        for (int x = 0; x < mazeSize; x++) {
-            for (int y = 0; y < mazeSize; y++) {
-                if (maze[x][y] instanceof Muur) {
-                    muurCreate = new Muur();                    
-                    maze[x][y] = muurCreate;
-                } else if (maze[x][y] instanceof Vriend) {
-                    vriendCreate = new Vriend();
-                    maze[x][y] = vriendCreate;
-                } else if (maze[x][y] instanceof Helper) {
-                    helperCreate = new Helper();
-                    maze[x][y] = helperCreate;
-                }
-            }
-        }
-        return maze;
-    }
-
-    public void DrawLevel() {
-        {
-            panel = new JPanel();
-            panel.setLayout(null);
-
-            speler.setBounds(speler.getTileX(), speler.getTileY(), ELEMENT_SIZE, ELEMENT_SIZE);
-            panel.add(speler);
-
-            mazeSize = level.length;
-
-            int x = 0;
-            int y = 0;
-
-            for (int i = 0; i < mazeSize; i++) {
-                for (int j = 0; j < mazeSize; j++) {
-                    element = (Element) level[i][j];
-                    element.setBounds(x, y, ELEMENT_SIZE, ELEMENT_SIZE);
-                    panel.add(element);
-                    x = x + ELEMENT_SIZE;
-                }
-                y = y + ELEMENT_SIZE;
-                x = 0;
-            }
-
-            panel.setBackground(Color.black);
-            panel.repaint();
-            panel.revalidate();
-        }
-    }
-
-    public void ReDrawLevel(Element[][] mazeIN) {
-        {
-            panel.removeAll();
-
-            speler.setBounds(speler.getTileX(), speler.getTileY(), ELEMENT_SIZE, ELEMENT_SIZE);
-            panel.add(speler);
-
-            mazeSize = level.length;
-
-            int x = 0;
-            int y = 0;
-
-            for (int i = 0; i < mazeSize; i++) {
-                for (int j = 0; j < mazeSize; j++) {
-
-                    element = (Element) mazeIN[i][j];
-                    element.setBounds(x, y, ELEMENT_SIZE, ELEMENT_SIZE);
-                    panel.add(element);
-
-                    x = x + ELEMENT_SIZE;
-                }
-                y = y + ELEMENT_SIZE;
-                x = 0;
-            }
-            panel.setBackground(Color.black);
-            panel.repaint();
-        }
-    }
-
-    public void DrawWin() {
-
-        panel.removeAll();
-
-        Rectangle r = panel.getBounds();
-
-        JLabel wintext = new JLabel("JEEEJ!");
-        wintext.setBounds((r.height / 3), (r.width / 3), 150, 50);
-        wintext.setFont(new Font("Serif", Font.PLAIN, 50));
-        wintext.setForeground(Color.black);
-        panel.add(wintext);
-        panel.setBackground(Color.red);
-        panel.setFocusable(false);
-
-        panel.repaint();
-    }
-
-    private Element[][] Maze1() {
-
-        Muur m = new Muur();
-        Pad p = new Pad();
-        Vriend v = new Vriend();
-        Helper h = new Helper();
-
-        Element[][] Maze = {
+        String[][] Maze1 = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-            {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
-            {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m},
+            {m, p, s, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
+            {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, v, m},
             {m, p, p, p, p, m, p, p, p, m, p, p, p, m, p, p, p, m, p, m},
             {m, m, p, m, p, m, p, m, m, m, p, m, p, m, p, m, p, p, p, m},
             {m, m, p, m, p, m, p, m, p, p, p, m, p, m, p, m, m, m, m, m},
@@ -197,23 +115,13 @@ public class Level {
             {m, p, m, p, m, m, m, p, m, p, m, m, p, m, p, p, p, p, p, m},
             {m, p, m, p, p, p, p, p, m, p, p, m, p, p, p, m, m, m, m, m},
             {m, p, m, m, m, m, m, m, m, m, p, m, m, m, m, m, p, p, p, m},
-            {m, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m, v, m},
+            {m, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m, p, m},
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return Maze;
-    }
-
-    private Element[][] Maze2() {
-
-        Muur m = new Muur();
-        Pad p = new Pad();
-        Vriend v = new Vriend();
-        Helper h = new Helper();
-
-        Element[][] Maze = {
+        String[][] Maze2 = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-            {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
+            {m, s, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
             {m, m, m, p, m, p, m, p, m, m, m, m, m, p, m, p, m, m, m, p, m},
             {m, p, p, p, m, p, m, p, m, p, p, p, p, p, m, p, p, p, m, p, m},
             {m, p, m, m, m, p, m, p, m, p, m, m, m, m, m, m, m, p, m, p, m},
@@ -235,19 +143,9 @@ public class Level {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return Maze;
-    }
-
-    private Element[][] Maze3() {
-
-        Muur m = new Muur();
-        Pad p = new Pad();
-        Vriend v = new Vriend();
-        Helper h = new Helper();
-
-        Element[][] Maze = {
+        String[][] Maze3 = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-            {m, p, h, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
+            {m, s, h, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m},
             {m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m},
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m, p, m},
@@ -269,19 +167,9 @@ public class Level {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
 
-        return Maze;
-    }
-
-    private Element[][] Maze4() {
-
-        Muur m = new Muur();
-        Pad p = new Pad();
-        Vriend v = new Vriend();
-        Helper h = new Helper();
-
-        Element[][] Maze = {
+        String[][] Maze4 = {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-            {m, p, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, p, p, m, m, m, m, p, p, p, p, p, p, p, p, p, m, p, m, p, p, p, m},
+            {m, s, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, p, p, m, m, m, m, p, p, p, p, p, p, p, p, p, m, p, m, p, p, p, m},
             {m, p, m, m, m, m, p, m, p, m, p, m, m, m, p, m, p, m, m, p, m, p, p, m, p, m, m, m, m, m, m, m, p, m, p, m, p, m, p, m},
             {m, p, m, p, p, p, p, m, p, m, p, m, m, m, p, m, p, m, m, p, m, p, m, m, p, m, p, p, p, p, p, p, p, m, p, m, p, m, p, m},
             {m, p, m, p, m, m, p, p, p, m, p, m, p, p, p, m, p, m, p, p, p, p, p, p, p, m, p, m, m, m, m, m, m, m, p, m, p, m, p, m},
@@ -321,7 +209,10 @@ public class Level {
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},};
 
-        return Maze;
+        mazeList.add(Maze1);
+        mazeList.add(Maze2);
+        mazeList.add(Maze3);
+        mazeList.add(Maze4);
     }
 
 }

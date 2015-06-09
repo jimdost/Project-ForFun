@@ -5,6 +5,8 @@
  */
 package GAME;
 
+import Game2.*;
+import GAME.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JComponent;
@@ -17,9 +19,7 @@ import javax.swing.JPanel;
 public class Muur extends Element {
 
     Muur() {
-        setLoopbaar(false);
-        getPositieX();
-        getPositieY();
+        setLoopbaar(false);        
     }
 
     @Override
