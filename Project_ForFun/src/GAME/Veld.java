@@ -5,11 +5,7 @@
  */
 package GAME;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
-import javax.swing.JComponent;
 
 /**
  *
@@ -25,9 +21,6 @@ public class Veld{
     Veld(Element element) { 
         this.element  = element;         
     }
-    
-    
-    
         
     protected Element getElement(){
         return element;

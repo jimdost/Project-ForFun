@@ -5,10 +5,6 @@
  */
 package GAME;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 import java.awt.Color;
 import java.awt.Graphics;
 
