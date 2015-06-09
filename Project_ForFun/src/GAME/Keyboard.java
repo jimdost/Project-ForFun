@@ -37,6 +37,10 @@ public class Keyboard implements KeyListener {
         if (keycode == KeyEvent.VK_D) {
             speler.move("RIGHT");            
         }
+        if (keycode == KeyEvent.VK_SPACE)
+        {
+            speler.checkItem();
+        }
 
     }
 

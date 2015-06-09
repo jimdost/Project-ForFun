@@ -5,7 +5,7 @@
  */
 package GAME;
 
-
+import javax.swing.JComponent;
 
 /**
  *

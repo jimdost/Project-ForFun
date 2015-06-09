@@ -16,9 +16,11 @@ public class SpelPanel extends JPanel {
 
     private Veld[][] bord;
     private Level level;
+    private int aantalStappen;
 
     public SpelPanel() {
         setLayout(null);
+        aantalStappen = 0;
         level = new Level();
         bord = level.getBord();
         DrawLevel();

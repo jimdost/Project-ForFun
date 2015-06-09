@@ -14,7 +14,8 @@ import java.awt.Graphics;
  */
 public class Vriend extends Item {
 
-    Vriend() {
+    public Vriend(boolean oppakbaar) {
+        super(oppakbaar);
         setLoopbaar(true);
     }
 

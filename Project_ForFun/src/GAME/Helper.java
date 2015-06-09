@@ -12,12 +12,13 @@ import java.awt.Graphics;
  *
  * @author wytze
  */
-public class Helper extends Element {
+public class Helper extends Item {
 
     Element[][] daMaze;
     int mazeSize;
 
-    public Helper() {        
+    public Helper(boolean oppakbaar) {        
+        super(oppakbaar);
         setLoopbaar(true);        
     }
 

@@ -14,48 +14,68 @@ import java.awt.Graphics;
  */
 public class Speler extends Element {
 
+    private boolean hasItem;
     Level level;
     Veld[][] bord;
 
     Speler() {
         setLoopbaar(true);
     }
-
-    public void move(String direction) {        
-        
-        veld.getBuuren(veld.veltCordinateY, veld.veltCordinateX);
-        System.out.println(veld.buren.get(direction));
+    
+    public void getItem()
+    {
+        //When on the same place as an item. Pick up item.
+    }
+    
+    public void shoot(String direction, boolean hasItem) {
+        Raket raket = new Raket(550);
+        if (direction.equals("UP"))
+        {
+            raket.move(direction.toString());
+        }
+        else if (direction.equals("DOWN"))
+        {
+            raket.move(direction.toString());
+        }
+        else if (direction.equals("LEFT"))
+        {
+            raket.move(direction.toString());
+        }
+        else if (direction.equals("RIGHT"))
+        {
+            raket.move(direction.toString());
+        }
+    }
+    
+    public void move(String direction) {
 
         if (direction.equals("UP")) {
-           /*
+            if (bord[veld.veltCordinateX][veld.veltCordinateY - 1].getElement().getLoopbaar()) {
                 veld.setPositieY(veld.veltCordinateY - 1);
             } else {
                 System.out.println("muur");
-            }*/
+            }
         }
         if (direction.equals("DOWN")) {
-            /*
-            if (bord[veld.veltCordinateY + 1][veld.veltCordinateX].getElement().getLoopbaar()) {
+            if (bord[veld.veltCordinateX][veld.veltCordinateY + 1].getElement().getLoopbaar()) {
                 veld.setPositieY(veld.veltCordinateY + 1);
             } else {
                 System.out.println("muur");
-            }*/
+            }
         }
         if (direction.equals("LEFT")) {
-            /*
-            if (bord[veld.veltCordinateY][veld.veltCordinateX - 1].getElement().getLoopbaar()) {
+            if (bord[veld.veltCordinateX - 1][veld.veltCordinateY].getElement().getLoopbaar()) {
                 veld.setPositieX(veld.veltCordinateX - 1);
             } else {
                 System.out.println("muur");
-            }*/
+            }
         }
         if (direction.equals("RIGHT")) {
-            /*
-            if (bord[veld.veltCordinateY][veld.veltCordinateX + 1].getElement().getLoopbaar()) {
+            if (bord[veld.veltCordinateX + 1][veld.veltCordinateY].getElement().getLoopbaar()) {
                 veld.setPositieX(veld.veltCordinateX + 1);
             } else {
                 System.out.println("muur");
-            }*/
+            }
         }
 
         System.out.println(veld.veltCordinateX);
@@ -71,5 +91,12 @@ public class Speler extends Element {
         g.setColor(Color.yellow);
         g.fillOval(2, 2, 16, 16);
 
+    }
+
+    void checkItem() {
+        //This method is performed when the Spacebar Key is clicked. It checks to see if the player is holding a Bazooka.
+        //If true, then call on the Shoot method. If false, then do nothing.
+        //Shoot needs the directions too. Get them from somewhere.
+        //In this method you give either true or false to the question of hasItem from the shoot method.
     }
 }

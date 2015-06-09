@@ -50,10 +50,10 @@ public class MenuPanel extends JPanel implements ActionListener {
         String action = e.getActionCommand();
         switch (action) {
             case "Reset":
-                System.out.println("reset");
+                System.out.println("reset"); //This has no functionality yet.
                 break;
             case "next":
-                System.out.println("next");
+                System.out.println("next"); //This has no functionality yet.
                 break;
         }
     }
