@@ -5,7 +5,10 @@
  */
 package GAME;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 import javax.swing.JComponent;
 
 /**

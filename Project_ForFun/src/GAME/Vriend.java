@@ -12,7 +12,7 @@ import java.awt.Graphics;
  *
  * @author wytze
  */
-public class Vriend extends Element {
+public class Vriend extends Item {
 
     Vriend() {
         setLoopbaar(true);
