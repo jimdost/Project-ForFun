@@ -5,40 +5,62 @@
  */
 package GAME;
 
+import Game2.*;
+import GAME.*;
 import java.awt.Color;
 import java.awt.Graphics;
+
 /**
  *
  * @author wytze
  */
 public class Speler extends Element {
 
-    private int tileX, tileY;
+    Level level;
+    Veld[][] bord;
 
-    public Speler(int x, int y) {
-        tileX = x;
-        tileY = y;
+    Speler() {
         setLoopbaar(true);
-        getPositieX();
-        getPositieY();
     }
 
-    public int getTileX() {
-        return tileX;
+    public void move(String direction) {
+
+        if (direction.equals("UP")) {
+            if (bord[veld.veltCordinateX][veld.veltCordinateY - 1].getElement().getLoopbaar()) {
+                veld.setPositieY(veld.veltCordinateY - 1);
+            } else {
+                System.out.println("muur");
+            }
+        }
+        if (direction.equals("DOWN")) {
+            if (bord[veld.veltCordinateX][veld.veltCordinateY + 1].getElement().getLoopbaar()) {
+                veld.setPositieY(veld.veltCordinateY + 1);
+            } else {
+                System.out.println("muur");
+            }
+        }
+        if (direction.equals("LEFT")) {
+            if (bord[veld.veltCordinateX - 1][veld.veltCordinateY].getElement().getLoopbaar()) {
+                veld.setPositieX(veld.veltCordinateX - 1);
+            } else {
+                System.out.println("muur");
+            }
+        }
+        if (direction.equals("RIGHT")) {
+            if (bord[veld.veltCordinateX + 1][veld.veltCordinateY].getElement().getLoopbaar()) {
+                veld.setPositieX(veld.veltCordinateX + 1);
+            } else {
+                System.out.println("muur");
+            }
+        }
+
+        System.out.println(veld.veltCordinateX);
+        System.out.println(veld.veltCordinateY);
+
     }
 
-    public int getTileY() {
-        return tileY;
-    }
-
-    public void move(int dx, int dy) {
-        tileX = tileX + dx;
-        tileY = tileY + dy;
-        setBounds(tileX, tileY, ELEMENT_SIZE, ELEMENT_SIZE);
-    }
-
-@Override
-        public void paintComponent(Graphics g) {
+    @Override
+    public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
 

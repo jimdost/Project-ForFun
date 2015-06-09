@@ -13,12 +13,8 @@ import java.awt.event.KeyListener;
  * @author wytze
  */
 public class Keyboard implements KeyListener {
-
-    public Level level;
-    public Element element;
-    public Speler speler;
-    private Element[][] Maze;
-    private int TileX, TileY;
+    
+    Speler speler;    
 
     public void keyTyped(KeyEvent e) {
 
@@ -27,56 +23,26 @@ public class Keyboard implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        Maze = level.GetLevel();
-        TileX = (speler.getTileX()) / 20;
-        TileY = (speler.getTileY()) / 20;
-
         int keycode = e.getKeyCode();
 
         if (keycode == KeyEvent.VK_W) {
-            element = (Element) Maze[TileY - 1][TileX];
-
-            if (element.getLoopbaar() == true) {
-                speler.move(0, -20);
-            }
+            speler.move("UP");            
         }
         if (keycode == KeyEvent.VK_S) {
-            element = (Element) Maze[TileY + 1][TileX];
-
-            if (element.getLoopbaar() == true) {
-                speler.move(0, 20);
-            }
+            speler.move("DOWN");            
         }
         if (keycode == KeyEvent.VK_A) {
-            element = (Element) Maze[TileY][TileX - 1];
-
-            if (element.getLoopbaar() == true) {
-                speler.move(-20, 0);                
-            }
+            speler.move("LEFT");            
         }
         if (keycode == KeyEvent.VK_D) {
-            element = (Element) Maze[TileY][TileX + 1];
-
-            if (element.getLoopbaar() == true) {
-                speler.move(20, 0);                
-            }
+            speler.move("RIGHT");            
         }
 
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        TileX = (speler.getTileX()) / 20;
-        TileY = (speler.getTileY()) / 20;
 
-        if (Maze[TileY][TileX] instanceof Vriend) {
-            level.DrawWin();
-        }
-
-        if (Maze[TileY][TileX] instanceof Helper) {
-            Helper helper = (Helper) Maze[TileY][TileX];
-            level.ReDrawLevel(helper.solveGame(Maze, TileY, TileX));
-        }
     }
 
 }
