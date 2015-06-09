@@ -21,35 +21,41 @@ public class Speler extends Element {
         setLoopbaar(true);
     }
 
-    public void move(String direction) {
+    public void move(String direction) {        
+        
+        veld.getBuuren(veld.veltCordinateY, veld.veltCordinateX);
+        System.out.println(veld.buren.get(direction));
 
         if (direction.equals("UP")) {
-            if (bord[veld.veltCordinateX][veld.veltCordinateY - 1].getElement().getLoopbaar()) {
+           /*
                 veld.setPositieY(veld.veltCordinateY - 1);
             } else {
                 System.out.println("muur");
-            }
+            }*/
         }
         if (direction.equals("DOWN")) {
-            if (bord[veld.veltCordinateX][veld.veltCordinateY + 1].getElement().getLoopbaar()) {
+            /*
+            if (bord[veld.veltCordinateY + 1][veld.veltCordinateX].getElement().getLoopbaar()) {
                 veld.setPositieY(veld.veltCordinateY + 1);
             } else {
                 System.out.println("muur");
-            }
+            }*/
         }
         if (direction.equals("LEFT")) {
-            if (bord[veld.veltCordinateX - 1][veld.veltCordinateY].getElement().getLoopbaar()) {
+            /*
+            if (bord[veld.veltCordinateY][veld.veltCordinateX - 1].getElement().getLoopbaar()) {
                 veld.setPositieX(veld.veltCordinateX - 1);
             } else {
                 System.out.println("muur");
-            }
+            }*/
         }
         if (direction.equals("RIGHT")) {
-            if (bord[veld.veltCordinateX + 1][veld.veltCordinateY].getElement().getLoopbaar()) {
+            /*
+            if (bord[veld.veltCordinateY][veld.veltCordinateX + 1].getElement().getLoopbaar()) {
                 veld.setPositieX(veld.veltCordinateX + 1);
             } else {
                 System.out.println("muur");
-            }
+            }*/
         }
 
         System.out.println(veld.veltCordinateX);
