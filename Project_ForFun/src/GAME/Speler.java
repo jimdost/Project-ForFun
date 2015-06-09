@@ -7,49 +7,43 @@ package GAME;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
-
 /**
  *
  * @author wytze
  */
+public class Speler extends Element {
 
-public class Speler extends Element {    
-    
-    private int tileX ,tileY; 
-    
-    public Speler(int x, int y)
-    { 
+    private int tileX, tileY;
+
+    public Speler(int x, int y) {
         tileX = x;
         tileY = y;
         setLoopbaar(true);
         getPositieX();
         getPositieY();
-    }   
-        
-    public int getTileX()
-    {
+    }
+
+    public int getTileX() {
         return tileX;
     }
-    
-    public int getTileY()
-    {
+
+    public int getTileY() {
         return tileY;
-    }    
-    
-    public void move(int dx, int dy){        
-        tileX = tileX + dx;
-        tileY = tileY + dy; 
-        setBounds(tileX, tileY, ELEMENT_SIZE , ELEMENT_SIZE);
     }
-    
-    @Override
-    public void paintComponent(Graphics g) {
-    
-        super.paintComponent(g);      
-        
+
+    public void move(int dx, int dy) {
+        tileX = tileX + dx;
+        tileY = tileY + dy;
+        setBounds(tileX, tileY, ELEMENT_SIZE, ELEMENT_SIZE);
+    }
+
+@Override
+        public void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+
         g.setColor(Color.yellow);
-        g.fillOval(2, 2, 16, 16);       
-        
+        g.fillOval(2, 2, 16, 16);
+
     }
 }

@@ -81,26 +81,15 @@ public class Level {
         for (int x = 0; x < mazeSize; x++) {
             for (int y = 0; y < mazeSize; y++) {
                 if (maze[x][y] instanceof Muur) {
-                    muurCreate = new Muur();
-                    muurCreate.setPositieX(x);
+                    muurCreate = new Muur();                    
                     maze[x][y] = muurCreate;
-                } else if (maze[x][y] instanceof Pad) {
-                    padCreate = new Pad();
-                    padCreate.setPositieX(x);
-                    maze[x][y] = padCreate;
                 } else if (maze[x][y] instanceof Vriend) {
                     vriendCreate = new Vriend();
-                    vriendCreate.setPositieX(x);
                     maze[x][y] = vriendCreate;
                 } else if (maze[x][y] instanceof Helper) {
                     helperCreate = new Helper();
-                    helperCreate.setPositieX(x);
                     maze[x][y] = helperCreate;
                 }
-                //muurCreate.setPositieY(y);
-                //padCreate.setPositieY(y);
-                //vriendCreate.setPositieY(y);
-                //helperCreate.setPositieX(y);
             }
         }
         return maze;
@@ -190,7 +179,6 @@ public class Level {
         Helper h = new Helper();
 
         Element[][] Maze = {
-            
             {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
             {m, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, m},
             {m, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m},

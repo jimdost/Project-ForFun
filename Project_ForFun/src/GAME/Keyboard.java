@@ -38,8 +38,6 @@ public class Keyboard implements KeyListener {
 
             if (element.getLoopbaar() == true) {
                 speler.move(0, -20);
-                System.out.println("Y  " + element.getPositieY());
-                System.out.println("X  " + element.getPositieX());
             }
         }
         if (keycode == KeyEvent.VK_S) {
@@ -47,26 +45,20 @@ public class Keyboard implements KeyListener {
 
             if (element.getLoopbaar() == true) {
                 speler.move(0, 20);
-                System.out.println("Y  " + element.getPositieY());
-                System.out.println("X  " + element.getPositieX());
             }
         }
         if (keycode == KeyEvent.VK_A) {
             element = (Element) Maze[TileY][TileX - 1];
 
             if (element.getLoopbaar() == true) {
-                speler.move(-20, 0);
-                System.out.println("Y  " + element.getPositieY());
-                System.out.println("X  " + element.getPositieX());
+                speler.move(-20, 0);                
             }
         }
         if (keycode == KeyEvent.VK_D) {
             element = (Element) Maze[TileY][TileX + 1];
 
             if (element.getLoopbaar() == true) {
-                speler.move(20, 0);
-                System.out.println("Y  " + element.getPositieY());
-                System.out.println("X  " + element.getPositieX());
+                speler.move(20, 0);                
             }
         }
 
