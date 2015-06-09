@@ -5,8 +5,7 @@
  */
 package GAME;
 
-import Game2.*;
-import GAME.*;
+
 import javax.swing.JComponent;
 
 /**
@@ -23,6 +22,9 @@ public class Veld{
     Veld(Element element) { 
         this.element  = element;         
     }
+    
+    
+    
         
     protected Element getElement(){
         return element;

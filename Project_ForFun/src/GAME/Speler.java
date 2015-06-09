@@ -5,8 +5,7 @@
  */
 package GAME;
 
-import Game2.*;
-import GAME.*;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
