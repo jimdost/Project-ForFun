@@ -39,24 +39,20 @@ public class Speler extends Element {
 
     public void move(String direction) {
 
-        System.out.println(veld.veltCordinateX);
-        System.out.println(veld.veltCordinateY);
-
-        veld.getBuuren(veld.veltCordinateY, veld.veltCordinateX);
+        veld.getBuuren(veld.getPositieY(), veld.getPositieX());
 
         if (veld.buren.get(direction).getElement().getLoopbaar()) {
 
-            System.out.println(veld.buren.get(direction).getElement().getLoopbaar());
+            //System.out.println(veld.buren.get(direction).getElement().getLoopbaar());
             //System.out.println(veld.buren.get(direction).getPositieX());
-            //System.out.println(veld.buren.get(direction).getPositieY());   
-
-            Element buur = veld.buren.get(direction).getElement();
-            Element speler = veld.getElement();
-
+            //System.out.println(veld.buren.get(direction).getPositieY()); 
             
-            veld.buren.get(direction).setElement(speler);
-            veld.setElement(buur);
-
+            veld.setElement(veld.buren.get(direction).getElement()); 
+            veld.buren.get(direction).setElement(this);                        
+            (this).setVeld(veld.buren.get(direction));
+            
+            //System.out.println("Speler x: " + veld.getPositieX());
+            //System.out.println("Speler y: " + veld.getPositieY());
         }
     }
 

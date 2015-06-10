@@ -6,6 +6,7 @@
 package GAME;
 
 import java.awt.Color;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -23,9 +24,11 @@ public class SpelPanel extends JPanel {
         aantalStappen = 0;
         level = new Level();
         bord = level.getBord();
+
         DrawLevel();
+
         setSize(bord.length * level.getVeltSize() + 5, bord.length * level.getVeltSize() + 62);
-        setBackground(Color.BLACK);        
+        setBackground(Color.BLACK);
         revalidate();
     }
 
@@ -48,16 +51,15 @@ public class SpelPanel extends JPanel {
         }
         repaint();
     }
-    
+
     protected void UpdateLevel() {        
-        
         Element element;
         int xB = 0;
         int yB = 0;
 
         for (int x = 0; x < bord.length; x++) {
             for (int y = 0; y < bord.length; y++) {
-                if (bord[x][y] != null) {
+                if (bord[x][y] != null && (bord[x][y].getElement() instanceof Speler)) {
                     element = bord[x][y].getElement();
                     element.setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
                     add(element);
@@ -77,5 +79,5 @@ public class SpelPanel extends JPanel {
     public void setLevel(Level level) {
         this.level = level;
     }
-    
+
 }
