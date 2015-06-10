@@ -16,10 +16,27 @@ import javax.swing.JPanel;
  */
 public class Muur extends Element {
 
-    Muur() {
+    int sterkte;
+    
+    Muur(int sterkte) {
+        
         setLoopbaar(false);        
+        this. sterkte = sterkte;
     }
 
+    public int getSterkte() {
+        return sterkte;
+    }
+
+    public void setSterkte(int sterkte) {
+        this.sterkte = sterkte;
+    }
+
+    public void destroyWall()
+    {
+        //The wall that has been hit by the rocket will be destroyed.
+    }
+    
     @Override
     public void paintComponent(Graphics g) {
 

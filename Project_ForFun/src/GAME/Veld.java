@@ -5,9 +5,13 @@
  */
 package GAME;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 
 
+=======
+import javax.swing.JComponent;
+>>>>>>> origin/master
 
 /**
  *
