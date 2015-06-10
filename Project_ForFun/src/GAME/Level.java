@@ -5,10 +5,9 @@
  */
 package GAME;
 
-import java.awt.Color;
+
 import java.util.ArrayList;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
+
 
 /**
  *
@@ -28,7 +27,7 @@ public class Level {
 
     private Veld[][] MazeToBord() {
 
-        String[][] levelOpzet = mazeList.get(3);
+        String[][] levelOpzet = mazeList.get(0);
         bord = new Veld[levelOpzet.length][levelOpzet.length];
 
         for (int x = 0; x < levelOpzet.length; x++) {

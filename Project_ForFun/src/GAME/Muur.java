@@ -7,8 +7,6 @@ package GAME;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 /**
  *

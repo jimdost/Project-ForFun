@@ -23,7 +23,7 @@ public class Veld{
     int veltCordinateY;
     Element element;    
     Veld[][] bord;
-    HashMap<String, Element> buren;
+    HashMap<String, Veld> buren;
     
     
     Veld(Element element) { 
@@ -35,10 +35,10 @@ public class Veld{
      buren = new HashMap<>();
      
      buren.clear();
-     buren.put("UP", bord[positieY + 1][positieX].getElement());
-     buren.put("DOWN", bord[positieY + 1][positieX].getElement());
-     buren.put("LEFT", bord[positieY][positieX - 1].getElement());
-     buren.put("RIGHT", bord[positieY][positieX + 1].getElement());
+     buren.put("UP", bord[positieY + 1][positieX]);
+     buren.put("DOWN", bord[positieY + 1][positieX]);
+     buren.put("LEFT", bord[positieY][positieX - 1]);
+     buren.put("RIGHT", bord[positieY][positieX + 1]);
         
     }
 

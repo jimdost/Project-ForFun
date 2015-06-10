@@ -16,6 +16,7 @@ public class Keyboard implements KeyListener {
     
     Speler speler;    
 
+    @Override
     public void keyTyped(KeyEvent e) {
 
     }
