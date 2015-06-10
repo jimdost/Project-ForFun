@@ -43,7 +43,7 @@ public class Muur extends Element {
         g.setColor(Color.blue);
         g.fillRect(0, 0, 20, 20);
 
-        Color c = new Color(255, 0, 0);
+        Color c = new Color(255, 0, 0, 255);
         g.setColor(c);
         g.fillRect(-3, -3, 21, 21);
 

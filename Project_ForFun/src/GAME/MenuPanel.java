@@ -5,7 +5,6 @@
  */
 package GAME;
 
-
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -20,13 +19,14 @@ import javax.swing.JPanel;
  */
 public class MenuPanel extends JPanel implements ActionListener {
 
-    
+    Frame frame;
+    int levelnummer = 0;
 
     public MenuPanel() {
-        setBackground(Color.BLUE);        
+        setBackground(Color.BLUE);
 
         JLabel label = new JLabel("The Maze Game                                 ");
-        label.setForeground(Color.WHITE);     
+        label.setForeground(Color.WHITE);
 
         JButton resetButton = new JButton("Reset");
         resetButton.setBackground(Color.blue);
@@ -49,12 +49,18 @@ public class MenuPanel extends JPanel implements ActionListener {
         String action = e.getActionCommand();
         switch (action) {
             case "Reset":
+                resetLevel();
                 System.out.println("reset"); //This has no functionality yet.
                 break;
             case "next":
-                System.out.println("next"); //This has no functionality yet.
+                System.out.println("next"); //This has no functionality yet. 
                 break;
         }
     }
 
+    private void resetLevel() {
+        frame.remove(frame.spel);
+        frame.createSpelComponents();
+        frame.spel.revalidate();  
+    }
 }

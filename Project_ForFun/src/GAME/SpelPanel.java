@@ -15,16 +15,16 @@ import javax.swing.JPanel;
  */
 public class SpelPanel extends JPanel {
 
-    private Veld[][] bord;
+    private final Veld[][] bord;
     private Level level;
-    private int aantalStappen;
+    private final int aantalStappen;
 
-    public SpelPanel() {
+    public SpelPanel(int levelnummer) {
         setLayout(null);
         aantalStappen = 0;
-        level = new Level();
-        bord = level.getBord();
 
+        level = new Level(levelnummer);
+        bord = level.getBord();
         DrawLevel();
 
         setSize(bord.length * level.getVeltSize() + 5, bord.length * level.getVeltSize() + 62);
@@ -78,6 +78,10 @@ public class SpelPanel extends JPanel {
 
     public void setLevel(Level level) {
         this.level = level;
+    }
+
+    public void nextLevel() {
+
     }
 
 }

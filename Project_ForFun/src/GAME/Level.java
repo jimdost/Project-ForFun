@@ -17,15 +17,18 @@ public class Level {
     private static final int VELDSIZE = 20;
     private Veld[][] bord;
     private Speler speler;
+    
+    private int levelNumb;
 
-    public Level() {
+    public Level(int levelNumb) {
+        this.levelNumb = levelNumb;
         getMazes();
         MazeToBord();
     }
 
     private Veld[][] MazeToBord() {
 
-        String[][] levelOpzet = mazeList.get(0);
+        String[][] levelOpzet = mazeList.get(levelNumb);
         bord = new Veld[levelOpzet.length][levelOpzet.length];
 
         for (int x = 0; x < levelOpzet.length; x++) {
@@ -111,7 +114,7 @@ public class Level {
 
         String[][] Maze1 = {
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-            {x, p, p, p, p, p, s, p, p, p, p, m, p, p, p, p, p, p, p, x},
+            {x, p, p, p, r, p, s, p, p, p, p, m, p, p, p, p, p, p, p, x},
             {x, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, x},
             {x, p, p, p, p, m, p, p, p, m, p, p, p, m, p, p, p, m, p, x},
             {x, m, p, m, p, m, p, m, m, m, p, m, p, m, p, m, p, p, p, x},

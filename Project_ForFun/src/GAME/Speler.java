@@ -7,6 +7,8 @@ package GAME;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import static java.lang.Thread.sleep;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,9 +17,38 @@ import java.awt.Graphics;
 public class Speler extends Element {
 
     private boolean hasItem;
+    private int sizeSpeler = 16;
+    private int sizeBorderSpeler = 2;
 
     Speler() {
         setLoopbaar(true);
+
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                while (true) {
+                    animation();
+                    try {
+                        sleep(500);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(SpelPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        t.start();
+    }
+    
+    private void animation() {
+        if (sizeSpeler > 15) {
+            sizeSpeler = sizeSpeler - 2;
+            sizeBorderSpeler = sizeBorderSpeler + 1;
+        }else{
+            sizeSpeler = sizeSpeler + 2;
+            sizeBorderSpeler = sizeBorderSpeler - 1;
+        }
+        repaint();
     }
 
     public void getItem() {
@@ -62,8 +93,8 @@ public class Speler extends Element {
         super.paintComponent(g);
 
         g.setColor(Color.yellow);
-        g.fillOval(2, 2, 16, 16);
-
+        g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler);
+        
     }
 
     void checkItem() {

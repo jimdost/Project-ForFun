@@ -32,15 +32,15 @@ public class Frame extends JFrame{
     }
     
     private void createMenuComponents(){
-        menu = new MenuPanel(); 
-        menu.spelPanel = spel;
+        menu = new MenuPanel();         
         add(menu , BorderLayout.NORTH);
+        menu.frame = (this);
     }
     
-    private void createSpelComponents(){
-        spel = new SpelPanel();
+    public void createSpelComponents(){
+        spel = new SpelPanel(0);
         KEYBBOARD.speler = spel.getLevel().getSpeler();
-        KEYBBOARD.spelpanel = spel;
+        KEYBBOARD.spelpanel = spel;        
         add(spel , BorderLayout.CENTER);
         setSize(spel.getSize());
     }
