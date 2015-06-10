@@ -5,6 +5,8 @@
  */
 package GAME;
 
+import java.util.HashMap;
+
 
 
 /**
@@ -13,13 +15,31 @@ package GAME;
  */
 public class Veld{
 
-    Level level;
     int veltCordinateX;
     int veltCordinateY;
-    Element element;
+    Element element;    
+    Veld[][] bord;
+    HashMap<String, Boolean> buren;
+    
     
     Veld(Element element) { 
         this.element  = element;         
+    }
+    
+    protected void getBuuren(int positieY, int positieX){
+                
+     buren = new HashMap<>();
+     
+     buren.clear();
+     buren.put("UP", false);
+     buren.put("DOWN", bord[positieY + 1][positieX].getElement().getLoopbaar());
+     buren.put("LEFT", bord[positieY][positieX - 1].getElement().getLoopbaar());
+     buren.put("RIGHT", bord[positieY][positieX + 1].getElement().getLoopbaar());
+        
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
     }
         
     protected Element getElement(){

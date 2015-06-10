@@ -33,42 +33,36 @@ public class Level {
 
         for (int x = 0; x < levelOpzet.length; x++) {
             for (int y = 0; y < levelOpzet.length; y++) {
-                Veld v;
+                Element e = new Element() {
+                };
+                Veld v = new Veld(e);
                 switch (levelOpzet[x][y]) {
                     case "m":
                         Muur muurCreate = new Muur();
-                        v = new Veld(muurCreate);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
+                        v.setElement(muurCreate);
                         muurCreate.setVeld(v);
-                        bord[x][y] = v;
                         break;
                     case "v":
                         Vriend vriendCreate = new Vriend();
-                        v = new Veld(vriendCreate);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
+                        v.setElement(vriendCreate);
                         vriendCreate.setVeld(v);
-                        bord[x][y] = v;
                         break;
                     case "h":
                         Helper helperCreate = new Helper();
-                        v = new Veld(helperCreate);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
+                        v.setElement(helperCreate);
                         helperCreate.setVeld(v);
-                        bord[x][y] = v;
                         break;
                     case "s":
-                        speler = new Speler();                        
-                        v = new Veld(speler);
-                        v.setPositieX(y);
-                        v.setPositieY(x); 
+                        speler = new Speler();
+                        v.setElement(speler);
                         speler.setVeld(v);
-                        speler.bord = bord;
-                        bord[x][y] = v;
                         break;
                 }
+                v.setPositieX(y);
+                v.setPositieY(x);
+                v.bord = bord;
+                bord[x][y] = v;
+
             }
         }
         return bord;
