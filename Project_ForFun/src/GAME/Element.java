@@ -15,7 +15,7 @@ import javax.swing.JComponent;
 public abstract class Element extends JComponent{
 
     
-    private boolean loopbaar;
+    private boolean loopbaar = true;
     Veld veld;
     //moet veld kennen
 

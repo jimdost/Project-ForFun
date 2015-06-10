@@ -49,17 +49,16 @@ public class Speler extends Element {
     
     public void move(String direction) {        
         
-        veld.getBuuren(veld.veltCordinateY, veld.veltCordinateX);
-        System.out.println(veld.buren.get(direction));
-
+        veld.getBuuren(veld.veltCordinateY, veld.veltCordinateX);   
+        
         if(veld.buren.get(direction).getElement().getLoopbaar()){
-            System.out.println(veld.buren.get(direction).getPositieX());
-            System.out.println(veld.buren.get(direction).getPositieY());
+            //System.out.println(veld.buren.get(direction).getPositieX());
+            //System.out.println(veld.buren.get(direction).getPositieY());
+            veld.setPositieX(veld.buren.get(direction).getPositieX());
+            veld.setPositieY(veld.buren.get(direction).getPositieY());
         }        
-
-        System.out.println(veld.veltCordinateX);
-        System.out.println(veld.veltCordinateY);
-
+        System.out.println(veld.buren.get(direction).getPositieX());
+        System.out.println(veld.buren.get(direction).getPositieY());
     }
 
     @Override
