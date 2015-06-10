@@ -28,7 +28,7 @@ public class Level {
 
     private Veld[][] MazeToBord() {
 
-        String[][] levelOpzet = mazeList.get(0);
+        String[][] levelOpzet = mazeList.get(3);
         bord = new Veld[levelOpzet.length][levelOpzet.length];
 
         for (int x = 0; x < levelOpzet.length; x++) {
