@@ -13,8 +13,9 @@ import java.awt.event.KeyListener;
  * @author wytze
  */
 public class Keyboard implements KeyListener {
-    
-    Speler speler;    
+
+    Speler speler;
+    SpelPanel spelpanel;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -27,22 +28,22 @@ public class Keyboard implements KeyListener {
         int keycode = e.getKeyCode();
 
         if (keycode == KeyEvent.VK_W) {
-            speler.move("UP");            
+            speler.move("UP");
         }
         if (keycode == KeyEvent.VK_S) {
-            speler.move("DOWN");            
+            speler.move("DOWN");
         }
         if (keycode == KeyEvent.VK_A) {
-            speler.move("LEFT");            
+            speler.move("LEFT");
         }
         if (keycode == KeyEvent.VK_D) {
-            speler.move("RIGHT");            
+            speler.move("RIGHT");
         }
-        if (keycode == KeyEvent.VK_SPACE)
-        {
+        if (keycode == KeyEvent.VK_SPACE) {
             speler.checkItem();
         }
-
+        spelpanel.UpdateLevel();
+        
     }
 
     @Override

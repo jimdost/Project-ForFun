@@ -37,7 +37,7 @@ public class Frame extends JFrame{
     private void createSpelComponents(){
         SpelPanel spel = new SpelPanel();
         KEYBBOARD.speler = spel.getLevel().getSpeler();
-        
+        KEYBBOARD.spelpanel = spel;
         add(spel , BorderLayout.CENTER);
         setSize(spel.getSize());
     }

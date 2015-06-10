@@ -30,6 +30,5 @@ public class MAIN {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-
     }
 }

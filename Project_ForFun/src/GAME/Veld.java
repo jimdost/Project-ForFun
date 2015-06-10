@@ -32,9 +32,8 @@ public class Veld{
     
     protected void getBuuren(int positieY, int positieX){
                 
-     buren = new HashMap<>();
+     buren = new HashMap<>();     
      
-     buren.clear();
      buren.put("UP", bord[positieY - 1][positieX]);
      buren.put("DOWN", bord[positieY + 1][positieX]);
      buren.put("LEFT", bord[positieY][positieX - 1]);

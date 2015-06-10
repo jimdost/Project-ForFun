@@ -48,6 +48,27 @@ public class SpelPanel extends JPanel {
         }
         repaint();
     }
+    
+    protected void UpdateLevel() {        
+        
+        Element element;
+        int xB = 0;
+        int yB = 0;
+
+        for (int x = 0; x < bord.length; x++) {
+            for (int y = 0; y < bord.length; y++) {
+                if (bord[x][y] != null) {
+                    element = bord[x][y].getElement();
+                    element.setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
+                    add(element);
+                }
+                xB = xB + level.getVeltSize();
+            }
+            yB = yB + level.getVeltSize();
+            xB = 0;
+        }
+        repaint();
+    }
 
     Level getLevel() {
         return level;

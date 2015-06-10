@@ -20,7 +20,7 @@ public class Level {
     private Veld[][] bord;
     private Speler speler;
 
-    public Level() {
+    public Level() {        
         getMazes();
         MazeToBord();
     }
@@ -64,7 +64,7 @@ public class Level {
                     case "s":
                         speler = new Speler();
                         v.setElement(speler);
-                        speler.setVeld(v);
+                        speler.setVeld(v);                        
                         break;
                     case "r":
                         Bazooka bazookaCreate = new Bazooka(true);
@@ -84,6 +84,10 @@ public class Level {
 
     public Veld[][] getBord() {
         return bord;
+    }
+
+    public void setBord(Veld[][] bord) {
+        this.bord = bord;
     }
 
     public int getVeltSize() {
@@ -109,7 +113,7 @@ public class Level {
 
         String[][] Maze1 = {
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-            {x, p, s, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, x},
+            {x, p, p, p, p, p, s, p, p, p, p, m, p, p, p, p, p, p, p, x},
             {x, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, x},
             {x, p, p, p, p, m, p, p, p, m, p, p, p, m, p, p, p, m, p, x},
             {x, m, p, m, p, m, p, m, m, m, p, m, p, m, p, m, p, p, p, x},

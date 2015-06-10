@@ -15,52 +15,49 @@ import java.awt.Graphics;
 public class Speler extends Element {
 
     private boolean hasItem;
-    Level level;
-    Veld[][] bord;
 
     Speler() {
         setLoopbaar(true);
     }
-    
-    public void getItem()
-    {
+
+    public void getItem() {
         //When on the same place as an item. Pick up item.
     }
-    
+
     public void shoot(String direction, boolean hasItem) {
         Raket raket = new Raket(550);
-        if (direction.equals("UP"))
-        {
+        if (direction.equals("UP")) {
             raket.move(direction.toString());
-        }
-        else if (direction.equals("DOWN"))
-        {
+        } else if (direction.equals("DOWN")) {
             raket.move(direction.toString());
-        }
-        else if (direction.equals("LEFT"))
-        {
+        } else if (direction.equals("LEFT")) {
             raket.move(direction.toString());
-        }
-        else if (direction.equals("RIGHT"))
-        {
+        } else if (direction.equals("RIGHT")) {
             raket.move(direction.toString());
         }
     }
-    
-    public void move(String direction) {        
-        
-        veld.getBuuren(veld.veltCordinateY, veld.veltCordinateX);   
-        
-        if(veld.buren.get(direction).getElement().getLoopbaar()){
-            
+
+    public void move(String direction) {
+
+        System.out.println(veld.veltCordinateX);
+        System.out.println(veld.veltCordinateY);
+
+        veld.getBuuren(veld.veltCordinateY, veld.veltCordinateX);
+
+        if (veld.buren.get(direction).getElement().getLoopbaar()) {
+
             System.out.println(veld.buren.get(direction).getElement().getLoopbaar());
-            System.out.println(veld.buren.get(direction).getPositieX());
-            System.out.println(veld.buren.get(direction).getPositieY());
-            veld.setPositieX(veld.buren.get(direction).getPositieX());
-            veld.setPositieY(veld.buren.get(direction).getPositieY());
+            //System.out.println(veld.buren.get(direction).getPositieX());
+            //System.out.println(veld.buren.get(direction).getPositieY());   
+
+            Element buur = veld.buren.get(direction).getElement();
+            Element speler = veld.getElement();
+
             
-            repaint();
-        }     
+            veld.buren.get(direction).setElement(speler);
+            veld.setElement(buur);
+
+        }
     }
 
     @Override
