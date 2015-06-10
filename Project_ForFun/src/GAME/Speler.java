@@ -20,35 +20,24 @@ public class Speler extends Element {
     private int sizeSpeler = 16;
     private int sizeBorderSpeler = 2;
 
-    Speler() {
-        setLoopbaar(true);
+    Thread t = new Thread() {
 
-        Thread t = new Thread() {
-
-            @Override
-            public void run() {
-                while (true) {
-                    animation();
-                    try {
-                        sleep(500);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(SpelPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    }
+        @Override
+        public void run() {
+            while (true) {
+                animation();
+                try {
+                    sleep(500);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SpelPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
                 }
             }
-        };
-        t.start();
-    }
-    
-    private void animation() {
-        if (sizeSpeler > 15) {
-            sizeSpeler = sizeSpeler - 2;
-            sizeBorderSpeler = sizeBorderSpeler + 1;
-        }else{
-            sizeSpeler = sizeSpeler + 2;
-            sizeBorderSpeler = sizeBorderSpeler - 1;
         }
-        repaint();
+    };
+
+    Speler() {
+        setLoopbaar(true);
+        t.start();
     }
 
     public void getItem() {
@@ -94,7 +83,18 @@ public class Speler extends Element {
 
         g.setColor(Color.yellow);
         g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler);
-        
+
+    }
+
+    private void animation() {
+        if (sizeSpeler > 15) {
+            sizeSpeler = sizeSpeler - 2;
+            sizeBorderSpeler = sizeBorderSpeler + 1;
+        } else {
+            sizeSpeler = sizeSpeler + 2;
+            sizeBorderSpeler = sizeBorderSpeler - 1;
+        }
+        repaint();
     }
 
     void checkItem() {

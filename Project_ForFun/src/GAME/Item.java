@@ -4,12 +4,10 @@
  */
 package GAME;
 
-import java.awt.Color;
-import java.awt.Graphics;
 
 /**
  *
- * @author Tiko
+ * @author wytze
  */
 public abstract class Item extends Element {
     
