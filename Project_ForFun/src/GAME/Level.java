@@ -40,40 +40,27 @@ public class Level {
                     case "Bm":
                         Muur muurCreateBuiten = new Muur(100000);
                         v = new Veld(muurCreateBuiten);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
                         muurCreateBuiten.setVeld(v);
-                        bord[x][y] = v;
                         break;
                     case "bm":
                         Muur muurCreateBinnen = new Muur(500);
                         v = new Veld(muurCreateBinnen);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
                         muurCreateBinnen.setVeld(v);
-                        bord[x][y] = v;
                         break;
                     case "v":
                         Vriend vriendCreate = new Vriend(true);
                         v = new Veld(vriendCreate);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
                         vriendCreate.setVeld(v);
                         break;
                     case "h":
                         Helper helperCreate = new Helper(true);
                         v = new Veld(helperCreate);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
                         helperCreate.setVeld(v);
                         break;
                     case "c":
                         Valsspeler valsspelerCreate = new Valsspeler(0, true);
                         v = new Veld(valsspelerCreate);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
                         valsspelerCreate.setVeld(v);
-                        bord[x][y] = v;
                         break;
                     case "s":
                         speler = new Speler();
@@ -83,10 +70,7 @@ public class Level {
                     case "r":
                         Bazooka bazookaCreate = new Bazooka(true);
                         v = new Veld(bazookaCreate);
-                        v.setPositieX(y);
-                        v.setPositieY(x);
                         bazookaCreate.setVeld(v);
-                        bord[x][y] = v;
                         break;
                 }
                 v.setPositieX(y);

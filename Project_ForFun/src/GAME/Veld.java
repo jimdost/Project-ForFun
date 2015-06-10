@@ -5,13 +5,13 @@
  */
 package GAME;
 
-<<<<<<< HEAD
+
 import java.util.HashMap;
 
 
-=======
+
 import javax.swing.JComponent;
->>>>>>> origin/master
+
 
 /**
  *
@@ -23,7 +23,7 @@ public class Veld{
     int veltCordinateY;
     Element element;    
     Veld[][] bord;
-    HashMap<String, Boolean> buren;
+    HashMap<String, Element> buren;
     
     
     Veld(Element element) { 
@@ -35,10 +35,10 @@ public class Veld{
      buren = new HashMap<>();
      
      buren.clear();
-     buren.put("UP", false);
-     buren.put("DOWN", bord[positieY + 1][positieX].getElement().getLoopbaar());
-     buren.put("LEFT", bord[positieY][positieX - 1].getElement().getLoopbaar());
-     buren.put("RIGHT", bord[positieY][positieX + 1].getElement().getLoopbaar());
+     buren.put("UP", bord[positieY + 1][positieX].getElement());
+     buren.put("DOWN", bord[positieY + 1][positieX].getElement());
+     buren.put("LEFT", bord[positieY][positieX - 1].getElement());
+     buren.put("RIGHT", bord[positieY][positieX + 1].getElement());
         
     }
 
