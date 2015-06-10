@@ -14,11 +14,17 @@ import java.awt.Graphics;
  */
 public class Vriend extends Item {
 
-    public Vriend(boolean oppakbaar) {
-        super(oppakbaar);
-        setLoopbaar(true);
-    }
 
+    Vriend() {
+        setLoopbaar(true);        
+    }
+   
+    @Override
+    protected void pakOp() {
+        setOppakbaar(false);
+        System.out.println("vriend");
+    }
+    
     @Override
     public void paintComponent(Graphics g) {
 

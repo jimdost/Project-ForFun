@@ -5,9 +5,7 @@
  */
 package GAME;
 
-
 import java.util.ArrayList;
-
 
 /**
  *
@@ -20,7 +18,7 @@ public class Level {
     private Veld[][] bord;
     private Speler speler;
 
-    public Level() {        
+    public Level() {
         getMazes();
         MazeToBord();
     }
@@ -46,28 +44,28 @@ public class Level {
                         v = new Veld(muurCreateBinnen);
                         muurCreateBinnen.setVeld(v);
                         break;
+                    case "s":
+                        speler = new Speler();
+                        v.setElement(speler);
+                        speler.setVeld(v);
+                        break;
                     case "v":
-                        Vriend vriendCreate = new Vriend(true);
+                        Vriend vriendCreate = new Vriend();
                         v = new Veld(vriendCreate);
                         vriendCreate.setVeld(v);
                         break;
                     case "h":
-                        Helper helperCreate = new Helper(true);
+                        Helper helperCreate = new Helper();
                         v = new Veld(helperCreate);
                         helperCreate.setVeld(v);
                         break;
                     case "c":
-                        Valsspeler valsspelerCreate = new Valsspeler(0, true);
+                        Valsspeler valsspelerCreate = new Valsspeler();
                         v = new Veld(valsspelerCreate);
                         valsspelerCreate.setVeld(v);
                         break;
-                    case "s":
-                        speler = new Speler();
-                        v.setElement(speler);
-                        speler.setVeld(v);                        
-                        break;
                     case "r":
-                        Bazooka bazookaCreate = new Bazooka(true);
+                        Bazooka bazookaCreate = new Bazooka();
                         v = new Veld(bazookaCreate);
                         bazookaCreate.setVeld(v);
                         break;

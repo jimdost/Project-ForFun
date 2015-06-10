@@ -13,9 +13,14 @@ import java.awt.Graphics;
  */
 public class Bazooka extends Item {
 
-    public Bazooka(boolean oppakbaar) {
-        super(oppakbaar);
+    public Bazooka() {        
         setOppakbaar(true);
+    }
+    
+    @Override
+    protected void pakOp() {
+        setOppakbaar(false);
+        System.out.println("Bazooka");
     }
     
     @Override

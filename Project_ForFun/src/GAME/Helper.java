@@ -17,11 +17,16 @@ public class Helper extends Item {
     Element[][] daMaze;
     int mazeSize;
 
-    public Helper(boolean oppakbaar) {        
-        super(oppakbaar);
+    public Helper() {   
         setLoopbaar(true);        
     }
 
+    @Override
+    protected void pakOp() {
+        setOppakbaar(false);
+        System.out.println("Helper");
+    }
+    
     @Override
     public void paintComponent(Graphics g) {
 

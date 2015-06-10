@@ -52,14 +52,14 @@ public class SpelPanel extends JPanel {
         repaint();
     }
 
-    protected void UpdateLevel() {        
+    protected void UpdateLevel() {
         Element element;
         int xB = 0;
         int yB = 0;
 
         for (int x = 0; x < bord.length; x++) {
             for (int y = 0; y < bord.length; y++) {
-                if (bord[x][y] != null && (bord[x][y].getElement() instanceof Speler)) {
+                if ((bord[x][y].getElement() instanceof Speler) || (bord[x][y].getElement() instanceof Item)) {
                     element = bord[x][y].getElement();
                     element.setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
                     add(element);

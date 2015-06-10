@@ -5,22 +5,20 @@
  */
 package GAME;
 
-
 import javax.swing.JComponent;
 
 /**
  *
  * @author wytze
  */
-public abstract class Element extends JComponent{
+public abstract class Element extends JComponent {
 
-    
     private boolean loopbaar = true;
     Veld veld;
     //moet veld kennen
 
     public Element() {
-         
+
     }
 
     public Veld getVeld() {
@@ -30,13 +28,12 @@ public abstract class Element extends JComponent{
     public void setVeld(Veld veld) {
         this.veld = veld;
     }
-    
+
     protected boolean getLoopbaar() {
         return loopbaar;
     }
 
     protected void setLoopbaar(boolean loopbaar) {
         this.loopbaar = loopbaar;
-    }   
-
+    }
 }

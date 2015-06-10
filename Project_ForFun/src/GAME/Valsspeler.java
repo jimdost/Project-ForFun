@@ -15,10 +15,8 @@ public class Valsspeler extends Item{
     
     private int cheatingAantalStappen;
 
-    public Valsspeler(int cheatingAantalStappen, boolean oppakbaar) {
-        super(oppakbaar);
-        setOppakbaar(true);
-        this.cheatingAantalStappen = cheatingAantalStappen;
+    public Valsspeler() {        
+        setOppakbaar(true);        
     }
 
     public int getCheatingAantalStappen() {
@@ -30,11 +28,17 @@ public class Valsspeler extends Item{
     }
     
     @Override
+    protected void pakOp() {
+        setOppakbaar(false);
+        System.out.println("ValsSpeler");
+    }
+    
+    @Override
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
 
         g.setColor(Color.orange);
         g.fillOval(2, 2, 16, 16);
-    }
+    }    
 }

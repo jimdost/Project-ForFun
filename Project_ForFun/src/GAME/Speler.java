@@ -43,16 +43,16 @@ public class Speler extends Element {
 
         if (veld.buren.get(direction).getElement().getLoopbaar()) {
 
-            //System.out.println(veld.buren.get(direction).getElement().getLoopbaar());
-            //System.out.println(veld.buren.get(direction).getPositieX());
-            //System.out.println(veld.buren.get(direction).getPositieY()); 
-            
-            veld.setElement(veld.buren.get(direction).getElement()); 
-            veld.buren.get(direction).setElement(this);                        
+            //check iteam
+            if (veld.buren.get(direction).getElement() instanceof Item) {
+                Item i = (Item) veld.buren.get(direction).getElement();
+                if (i.oppakbaar) {
+                    i.pakOp();
+                }
+            }
+            veld.setElement(veld.buren.get(direction).getElement());
+            veld.buren.get(direction).setElement(this);
             (this).setVeld(veld.buren.get(direction));
-            
-            //System.out.println("Speler x: " + veld.getPositieX());
-            //System.out.println("Speler y: " + veld.getPositieY());
         }
     }
 

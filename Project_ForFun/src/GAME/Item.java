@@ -12,13 +12,14 @@ import java.awt.Graphics;
  * @author Tiko
  */
 public abstract class Item extends Element {
-    boolean oppakbaar;
+    
+    boolean oppakbaar = true;
 
-    public Item(boolean oppakbaar) {
-        getVeld();
-        setLoopbaar(true);
-        this.oppakbaar = oppakbaar;
+    public Item() {        
+        setLoopbaar(true);        
     }
+    
+    abstract void pakOp();
 
     public boolean getOppakbaar() {
         return oppakbaar;
@@ -26,14 +27,5 @@ public abstract class Item extends Element {
 
     public void setOppakbaar(boolean oppakbaar) {
         this.oppakbaar = oppakbaar;
-    }
-    
-    @Override
-    public void paintComponent(Graphics g) {
-
-        super.paintComponent(g);
-
-        g.setColor(Color.white);
-        g.fillOval(2, 2, 16, 16);
-    }
+    }   
 }

@@ -19,6 +19,8 @@ public class Frame extends JFrame{
     private final int frameHeight = 600;
     private final int frameWidh = 400;
     private final Keyboard KEYBBOARD;
+    MenuPanel menu;
+    SpelPanel spel;
 
     public Frame() {
         setSize(frameWidh, frameHeight);        
@@ -30,12 +32,13 @@ public class Frame extends JFrame{
     }
     
     private void createMenuComponents(){
-        MenuPanel menu = new MenuPanel(); 
+        menu = new MenuPanel(); 
+        menu.spelPanel = spel;
         add(menu , BorderLayout.NORTH);
     }
     
     private void createSpelComponents(){
-        SpelPanel spel = new SpelPanel();
+        spel = new SpelPanel();
         KEYBBOARD.speler = spel.getLevel().getSpeler();
         KEYBBOARD.spelpanel = spel;
         add(spel , BorderLayout.CENTER);
