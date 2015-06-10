@@ -52,13 +52,15 @@ public class Speler extends Element {
         veld.getBuuren(veld.veltCordinateY, veld.veltCordinateX);   
         
         if(veld.buren.get(direction).getElement().getLoopbaar()){
-            //System.out.println(veld.buren.get(direction).getPositieX());
-            //System.out.println(veld.buren.get(direction).getPositieY());
+            
+            System.out.println(veld.buren.get(direction).getElement().getLoopbaar());
+            System.out.println(veld.buren.get(direction).getPositieX());
+            System.out.println(veld.buren.get(direction).getPositieY());
             veld.setPositieX(veld.buren.get(direction).getPositieX());
             veld.setPositieY(veld.buren.get(direction).getPositieY());
-        }        
-        System.out.println(veld.buren.get(direction).getPositieX());
-        System.out.println(veld.buren.get(direction).getPositieY());
+            
+            repaint();
+        }     
     }
 
     @Override

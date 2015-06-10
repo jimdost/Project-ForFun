@@ -35,7 +35,7 @@ public class Veld{
      buren = new HashMap<>();
      
      buren.clear();
-     buren.put("UP", bord[positieY + 1][positieX]);
+     buren.put("UP", bord[positieY - 1][positieX]);
      buren.put("DOWN", bord[positieY + 1][positieX]);
      buren.put("LEFT", bord[positieY][positieX - 1]);
      buren.put("RIGHT", bord[positieY][positieX + 1]);
