@@ -26,8 +26,12 @@ public class Veld{
     HashMap<String, Veld> buren;
     
     
-    Veld(Element element) { 
+    Veld(Element element) {        
         this.element  = element;         
+    }
+
+    public Veld() {
+        this.element = null;
     }
     
     protected void getBuuren(int positieY, int positieX){

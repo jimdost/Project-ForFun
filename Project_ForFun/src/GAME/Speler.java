@@ -72,7 +72,7 @@ public class Speler extends Element {
             }
             veld.setElement(veld.buren.get(direction).getElement());
             veld.buren.get(direction).setElement(this);
-            (this).setVeld(veld.buren.get(direction));
+            //(this).setVeld(veld.buren.get(direction));
         }
     }
 
