@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author wytze
  */
-public class SpelPanel extends JPanel {
+public final class SpelPanel extends JPanel {
 
     private final Veld[][] bord;
     private Level level;
@@ -32,44 +32,42 @@ public class SpelPanel extends JPanel {
         revalidate();
     }
 
-    private void DrawLevel() {
-        Element element;
+    protected void DrawLevel() {        
         int xB = 0;
         int yB = 0;
-
+        
         for (int x = 0; x < bord.length; x++) {
-            for (int y = 0; y < bord.length; y++) {
-                if (bord[x][y] != null) {
-                    element = bord[x][y].getElement();
-                    element.setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
-                    add(element);
-                }
+            for (int y = 0; y < bord.length; y++) {                
+                if (bord[x][y].getElement() != null) {   
+                    Veld veld = bord[x][y];
+                    veld.getElement().setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
+                    add(veld.getElement());
+                }                
                 xB = xB + level.getVeltSize();
             }
             yB = yB + level.getVeltSize();
             xB = 0;
-        }
-        repaint();
+        }        
     }
 
-    protected void UpdateLevel() {
-        Element element;
+    protected void UpdateLevel() {        
         int xB = 0;
         int yB = 0;
 
         for (int x = 0; x < bord.length; x++) {
             for (int y = 0; y < bord.length; y++) {
-                if ((bord[x][y].getElement() instanceof Speler) || (bord[x][y].getElement() instanceof Item)) {
-                    element = bord[x][y].getElement();
-                    element.setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
-                    add(element);
+                
+                if (bord[x][y].getElement() instanceof Speler || bord[x][y].getElement() instanceof PadSolved) {  
+                    Veld veld = bord[x][y];
+                    veld.getElement().setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
+                    add(veld.getElement());
                 }
                 xB = xB + level.getVeltSize();
             }
             yB = yB + level.getVeltSize();
             xB = 0;
         }
-        repaint();
+        repaint();        
     }
 
     Level getLevel() {

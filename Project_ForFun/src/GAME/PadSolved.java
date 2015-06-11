@@ -12,26 +12,18 @@ import java.awt.Graphics;
  *
  * @author wytze
  */
-public class Vriend extends Item {
-
-
-    Vriend() {
-              
-    }
-   
-    @Override
-    protected void pakOp() {        
-        System.out.println("vriend");
-        setVisible(false);
+public class PadSolved extends Element{
+    
+    PadSolved() {
+        
     }
     
     @Override
     public void paintComponent(Graphics g) {
 
-        super.paintComponent(g);
-
-        g.setColor(Color.green);
-        g.fillOval(2, 2, 16, 16);
-
-    }
+        super.paintComponent(g);  
+        
+        g.setColor(Color.ORANGE);
+        g.fillRect(6, 6, 8, 8);        
+    }    
 }

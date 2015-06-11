@@ -5,6 +5,7 @@
  */
 package GAME;
 
+
 import javax.swing.JComponent;
 
 /**
@@ -35,5 +36,6 @@ public abstract class Element extends JComponent {
 
     protected void setLoopbaar(boolean loopbaar) {
         this.loopbaar = loopbaar;
-    }
+    }    
+    
 }

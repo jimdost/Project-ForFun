@@ -15,8 +15,8 @@ public class Valsspeler extends Item{
     
     private int cheatingAantalStappen;
 
-    public Valsspeler() {        
-        setOppakbaar(true);        
+    public Valsspeler() {       
+                
     }
 
     public int getCheatingAantalStappen() {
@@ -28,9 +28,9 @@ public class Valsspeler extends Item{
     }
     
     @Override
-    protected void pakOp() {
-        setOppakbaar(false);
-        System.out.println("ValsSpeler");
+    protected void pakOp() {        
+        System.out.println("ValsSpeler");       
+        setVisible(false);
     }
     
     @Override

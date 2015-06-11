@@ -17,7 +17,7 @@ public class Level {
     private static final int VELDSIZE = 20;
     private Veld[][] bord;
     private Speler speler;
-    
+
     private int levelNumb;
 
     public Level(int levelNumb) {
@@ -33,51 +33,44 @@ public class Level {
 
         for (int x = 0; x < levelOpzet.length; x++) {
             for (int y = 0; y < levelOpzet.length; y++) {
-                Element e = new Element() {
-                };
-                Veld v = new Veld(e);
+                Veld v = new Veld();
                 switch (levelOpzet[x][y]) {
                     case "Bm":
                         Muur muurCreateBuiten = new Muur(100000);
-                        v = new Veld(muurCreateBuiten);
-                        muurCreateBuiten.setVeld(v);
+                        v.setElement(muurCreateBuiten);
                         break;
                     case "bm":
                         Muur muurCreateBinnen = new Muur(500);
-                        v = new Veld(muurCreateBinnen);
-                        muurCreateBinnen.setVeld(v);
+                        v.setElement(muurCreateBinnen);
+                        break;
+                    case "v":
+                        Vriend vriendCreate = new Vriend();
+                        v.setElement(vriendCreate);
+                        vriendCreate.setVeld(v);
+                        break;
+                    case "h":
+                        Helper helperCreate = new Helper();
+                        v.setElement(helperCreate);
+                        helperCreate.setVeld(v);
+                        break;
+                    case "c":
+                        Valsspeler valsspelerCreate = new Valsspeler();
+                        v.setElement(valsspelerCreate);
+                        break;
+                    case "r":
+                        Bazooka bazookaCreate = new Bazooka();
+                        v.setElement(bazookaCreate);
                         break;
                     case "s":
                         speler = new Speler();
                         v.setElement(speler);
                         speler.setVeld(v);
                         break;
-                    case "v":
-                        Vriend vriendCreate = new Vriend();
-                        v = new Veld(vriendCreate);
-                        vriendCreate.setVeld(v);
-                        break;
-                    case "h":
-                        Helper helperCreate = new Helper();
-                        v = new Veld(helperCreate);
-                        helperCreate.setVeld(v);
-                        break;
-                    case "c":
-                        Valsspeler valsspelerCreate = new Valsspeler();
-                        v = new Veld(valsspelerCreate);
-                        valsspelerCreate.setVeld(v);
-                        break;
-                    case "r":
-                        Bazooka bazookaCreate = new Bazooka();
-                        v = new Veld(bazookaCreate);
-                        bazookaCreate.setVeld(v);
-                        break;
                 }
                 v.setPositieX(y);
                 v.setPositieY(x);
                 v.bord = bord;
                 bord[x][y] = v;
-
             }
         }
         return bord;
@@ -114,7 +107,7 @@ public class Level {
 
         String[][] Maze1 = {
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-            {x, p, p, p, r, p, s, p, p, p, p, m, p, p, p, p, p, p, p, x},
+            {x, s, p, p, r, p, p, p, p, p, h, m, p, p, p, p, p, p, p, x},
             {x, p, m, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, p, x},
             {x, p, p, p, p, m, p, p, p, m, p, p, p, m, p, p, p, m, p, x},
             {x, m, p, m, p, m, p, m, m, m, p, m, p, m, p, m, p, p, p, x},

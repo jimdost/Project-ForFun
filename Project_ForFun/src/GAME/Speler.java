@@ -27,7 +27,7 @@ public class Speler extends Element {
             while (true) {
                 animation();
                 try {
-                    sleep(500);
+                    sleep(400);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(SpelPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
                 }
@@ -59,20 +59,16 @@ public class Speler extends Element {
 
     public void move(String direction) {
 
-        veld.getBuuren(veld.getPositieY(), veld.getPositieX());
+        veld.getBuuren(veld.getPositieY(), veld.getPositieX());         
 
-        if (veld.buren.get(direction).getElement().getLoopbaar()) {
-
-            //check iteam
-            if (veld.buren.get(direction).getElement() instanceof Item) {
-                Item i = (Item) veld.buren.get(direction).getElement();
-                if (i.oppakbaar) {
-                    i.pakOp();
-                }
-            }
-            veld.setElement(veld.buren.get(direction).getElement());
+        if ((veld.buren.get(direction).getElement() == null) || (veld.buren.get(direction).getElement().getLoopbaar())) {
+            if(veld.buren.get(direction).getElement() instanceof Item){
+                Item i = (Item) veld.buren.get(direction).getElement();                
+                i.pakOp(); 
+            }            
+            veld.setElement(null);
             veld.buren.get(direction).setElement(this);
-            //(this).setVeld(veld.buren.get(direction));
+            (this).setVeld(veld.buren.get(direction));
         }
     }
 
@@ -82,8 +78,7 @@ public class Speler extends Element {
         super.paintComponent(g);
 
         g.setColor(Color.yellow);
-        g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler);
-
+        g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler);   
     }
 
     private void animation() {
@@ -95,12 +90,5 @@ public class Speler extends Element {
             sizeBorderSpeler = sizeBorderSpeler - 1;
         }
         repaint();
-    }
-
-    void checkItem() {
-        //This method is performed when the Spacebar Key is clicked. It checks to see if the player is holding a Bazooka.
-        //If true, then call on the Shoot method. If false, then do nothing.
-        //Shoot needs the directions too. Get them from somewhere.
-        //In this method you give either true or false to the question of hasItem from the shoot method.
     }
 }

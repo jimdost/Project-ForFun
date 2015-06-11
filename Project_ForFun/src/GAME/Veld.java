@@ -6,12 +6,8 @@
 package GAME;
 
 
+
 import java.util.HashMap;
-
-
-
-
-
 
 /**
  *
@@ -21,19 +17,15 @@ public class Veld{
 
     int veltCordinateX;
     int veltCordinateY;
-    Element element;    
+    Element element = null;    
     Veld[][] bord;
     HashMap<String, Veld> buren;
     
     
-    Veld(Element element) {        
-        this.element  = element;         
+    Veld() {        
+                 
     }
 
-    public Veld() {
-        this.element = null;
-    }
-    
     protected void getBuuren(int positieY, int positieX){
                 
      buren = new HashMap<>();     
@@ -66,6 +58,5 @@ public class Veld{
 
     protected void setPositieY(int posY) {
         this.veltCordinateY = posY;
-    }
-
+    }    
 }
