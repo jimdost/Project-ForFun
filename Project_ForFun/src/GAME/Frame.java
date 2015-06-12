@@ -14,13 +14,14 @@ import javax.swing.JFrame;
  *
  * @author wytze
  */
-public class Frame extends JFrame{
+public final class Frame extends JFrame{
 
     private final int frameHeight = 600;
     private final int frameWidh = 400;
     private final Keyboard KEYBBOARD;
     MenuPanel menu;
     SpelPanel spel;
+    static int levelNr = 0;
 
     public Frame() {
         setSize(frameWidh, frameHeight);        
@@ -28,7 +29,7 @@ public class Frame extends JFrame{
         KEYBBOARD = new Keyboard();        
         addKeyListener(KEYBBOARD);  
         createMenuComponents();  
-        createSpelComponents();
+        createSpelComponents(levelNr);
     }
     
     private void createMenuComponents(){
@@ -37,8 +38,9 @@ public class Frame extends JFrame{
         menu.frame = (this);
     }
     
-    public void createSpelComponents(){
-        spel = new SpelPanel(0);
+    public void createSpelComponents(int levelNr){
+        spel = new SpelPanel(levelNr);
+        spel.frame = (this);
         KEYBBOARD.speler = spel.getLevel().getSpeler();
         KEYBBOARD.spelpanel = spel;        
         add(spel , BorderLayout.CENTER);

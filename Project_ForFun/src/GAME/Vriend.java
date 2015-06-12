@@ -14,6 +14,7 @@ import java.awt.Graphics;
  */
 public class Vriend extends Item {
 
+    Level level;
 
     Vriend() {
               
@@ -21,17 +22,16 @@ public class Vriend extends Item {
    
     @Override
     protected void pakOp() {        
-        System.out.println("vriend");
-        setVisible(false);
+        System.out.println("vriend");  
+        level.spelpanel.DrawWin();
+        level.getSpeler().setVisible(false);
     }
     
     @Override
     public void paintComponent(Graphics g) {
-
         super.paintComponent(g);
 
         g.setColor(Color.green);
         g.fillOval(2, 2, 16, 16);
-
     }
 }

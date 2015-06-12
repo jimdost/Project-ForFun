@@ -15,7 +15,7 @@ import java.awt.Graphics;
 public class PadSolved extends Element{
     
     PadSolved() {
-        
+        setLoopbaar(true);
     }
     
     @Override
@@ -24,6 +24,6 @@ public class PadSolved extends Element{
         super.paintComponent(g);  
         
         g.setColor(Color.ORANGE);
-        g.fillRect(6, 6, 8, 8);        
+        g.fillRect(6, 6, 8, 8);
     }    
 }

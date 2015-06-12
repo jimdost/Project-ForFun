@@ -7,6 +7,7 @@ package GAME;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import static java.lang.Thread.sleep;
 import java.util.logging.Logger;
 
@@ -65,20 +66,25 @@ public class Speler extends Element {
             if(veld.buren.get(direction).getElement() instanceof Item){
                 Item i = (Item) veld.buren.get(direction).getElement();                
                 i.pakOp(); 
-            }            
+            }
+            if(veld.buren.get(direction).getElement() == null){
+               
+            } 
+            
             veld.setElement(null);
             veld.buren.get(direction).setElement(this);
-            (this).setVeld(veld.buren.get(direction));
+            (this).setVeld(veld.buren.get(direction)); 
         }
     }
 
     @Override
     public void paintComponent(Graphics g) {
 
-        super.paintComponent(g);
-
+        super.paintComponent(g);        
+        Graphics2D g2 = (Graphics2D) g.create();        
         g.setColor(Color.yellow);
-        g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler);   
+        g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler);  
+        g2.dispose();
     }
 
     private void animation() {

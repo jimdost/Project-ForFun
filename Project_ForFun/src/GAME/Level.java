@@ -15,18 +15,19 @@ public class Level {
 
     private ArrayList<String[][]> mazeList;
     private static final int VELDSIZE = 20;
+    SpelPanel spelpanel;
     private Veld[][] bord;
     private Speler speler;
+    
 
-    private int levelNumb;
+   
 
-    public Level(int levelNumb) {
-        this.levelNumb = levelNumb;
+    public Level(int levelNumb) {        
         getMazes();
-        MazeToBord();
+        MazeToBord(levelNumb);
     }
 
-    private Veld[][] MazeToBord() {
+    private Veld[][] MazeToBord(int levelNumb) {
 
         String[][] levelOpzet = mazeList.get(levelNumb);
         bord = new Veld[levelOpzet.length][levelOpzet.length];
@@ -46,7 +47,7 @@ public class Level {
                     case "v":
                         Vriend vriendCreate = new Vriend();
                         v.setElement(vriendCreate);
-                        vriendCreate.setVeld(v);
+                        vriendCreate.level = this;
                         break;
                     case "h":
                         Helper helperCreate = new Helper();

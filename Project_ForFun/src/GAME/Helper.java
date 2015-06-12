@@ -7,6 +7,7 @@ package GAME;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  *
@@ -134,7 +135,7 @@ public class Helper extends Item {
             for (int c = 0; c < mazeSize; c++) {
                 if (beenhere(r, c, mypath, mylength) && !(daMaze[r][c].getElement() instanceof Vriend) && !(daMaze[r][c].getElement() instanceof Item)) {
                     PadSolved padSolveCreate = new PadSolved();                    
-                    daMaze[r][c].setElement(padSolveCreate); 
+                    daMaze[r][c].setElement(padSolveCreate);
                 }
             }
         }
@@ -152,5 +153,5 @@ public class Helper extends Item {
                 }
             }
         }
-    }
+    }  
 }

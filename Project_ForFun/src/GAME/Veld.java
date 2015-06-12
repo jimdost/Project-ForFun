@@ -17,10 +17,9 @@ public class Veld{
 
     int veltCordinateX;
     int veltCordinateY;
-    Element element = null;    
     Veld[][] bord;
-    HashMap<String, Veld> buren;
-    
+    Element element = null; 
+    HashMap<String, Veld> buren;    
     
     Veld() {        
                  
@@ -58,5 +57,5 @@ public class Veld{
 
     protected void setPositieY(int posY) {
         this.veltCordinateY = posY;
-    }    
+    }  
 }
