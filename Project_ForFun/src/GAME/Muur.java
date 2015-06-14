@@ -40,12 +40,11 @@ public class Muur extends Element {
 
         super.paintComponent(g);
 
-        g.setColor(Color.blue);
-        g.fillRect(0, 0, 20, 20);
-
-        Color c = new Color(255, 0, 0, 255);
-        g.setColor(c);
-        g.fillRect(-3, -3, 21, 21);
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, 30, 30);
+        
+        g.setColor(Color.WHITE);
+        g.fillRect(3, 3, 23, 23);
 
     }
 

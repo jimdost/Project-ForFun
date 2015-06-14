@@ -13,7 +13,8 @@ import java.awt.Graphics;
  */
 public class Valsspeler extends Item{
     
-    private int cheatingAantalStappen;
+    private int cheatingAantalStappen = 10;
+    Level level;
 
     public Valsspeler() {       
                 
@@ -29,7 +30,8 @@ public class Valsspeler extends Item{
     
     @Override
     protected void pakOp() {        
-        System.out.println("ValsSpeler");       
+        System.out.println("ValsSpeler");   
+        level.spelpanel.aantalStappen = level.spelpanel.aantalStappen - cheatingAantalStappen;
         setVisible(false);
     }
     
@@ -39,6 +41,6 @@ public class Valsspeler extends Item{
         super.paintComponent(g);
 
         g.setColor(Color.orange);
-        g.fillOval(2, 2, 16, 16);
+        g.fillOval(5, 5, 20, 20);
     }    
 }

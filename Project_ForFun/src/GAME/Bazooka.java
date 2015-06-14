@@ -30,7 +30,7 @@ public class Bazooka extends Item {
         
         Color c = new Color(0, 0, 255);
         g.setColor(c);
-        g.fillOval(2, 2, 16, 16);
+        g.fillOval(5, 5, 20, 20);
     }
     
 }

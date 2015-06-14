@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 /**
  *
  * @author wytze
@@ -22,7 +23,8 @@ public final class SpelPanel extends JPanel implements ActionListener {
 
     private final Veld[][] bord;
     private Level level;
-    private final int aantalStappen;
+    private JLabel stapppenLable;
+    public int aantalStappen;
     Frame frame;
 
     public SpelPanel(int levelnummer) {
@@ -32,10 +34,17 @@ public final class SpelPanel extends JPanel implements ActionListener {
         level = new Level(levelnummer);
         level.spelpanel = (this);
         bord = level.getBord();
+        
+        stapppenLable = new JLabel("Move teller:  " +aantalStappen);
+        stapppenLable.setBounds(380, 0, 200, 25);
+        stapppenLable.setFont(new Font("Serif", Font.PLAIN, 26));
+        stapppenLable.setForeground(Color.red);
+        add(stapppenLable);
+        
         DrawLevel();
 
-        setSize(bord.length * level.getVeltSize() + 5, bord.length * level.getVeltSize() + 62);
-        setBackground(Color.BLACK);
+        setSize(bord.length * level.getVeltSize() + 5, bord.length * level.getVeltSize() + 62);         
+        setBackground(Color.gray);
         revalidate();
     }
 
@@ -55,6 +64,7 @@ public final class SpelPanel extends JPanel implements ActionListener {
             yB = yB + level.getVeltSize();
             xB = 0;
         }
+        revalidate();
     }
 
     protected void UpdateLevel() {
@@ -73,8 +83,9 @@ public final class SpelPanel extends JPanel implements ActionListener {
             yB = yB + level.getVeltSize();
             xB = 0;
         }
-        repaint();
-        revalidate();
+        aantalStappen++;
+        stapppenLable.setText("Move teller:  " +aantalStappen);
+        repaint();  
     }
 
     protected void DrawWin() {
@@ -84,13 +95,13 @@ public final class SpelPanel extends JPanel implements ActionListener {
         Rectangle r = getBounds();
 
         JLabel wintext = new JLabel("JEEEJ!");
-        wintext.setBounds((r.height / 3), (r.width / 3), 150, 50);
+        wintext.setBounds((r.height / 3) + 20, (r.width / 4), 150, 50);
         wintext.setFont(new Font("Serif", Font.PLAIN, 50));
         wintext.setForeground(Color.black);
 
         JButton nextlevel = new JButton("next level");
         nextlevel.setBackground(Color.blue);
-        nextlevel.setBounds((r.height / 2) - 35, (r.width / 3) + 120, 80, 30);
+        nextlevel.setBounds((r.height / 2) - 45, (r.width / 3) + 120, 80, 30);
         nextlevel.setFocusable(false);
         nextlevel.addActionListener(this);
 
@@ -98,7 +109,6 @@ public final class SpelPanel extends JPanel implements ActionListener {
         add(nextlevel);
         setBackground(Color.red);
         setFocusable(false);
-
         repaint();
     }
 
@@ -115,14 +125,13 @@ public final class SpelPanel extends JPanel implements ActionListener {
 
         String action = e.getActionCommand();
         switch (action) {
-            case "next level":
-                System.out.println("next"); //This has no functionality yet. 
+            case "next level":                 
                 frame.remove(frame.spel);
                 Frame.levelNr++;
                 frame.createSpelComponents(Frame.levelNr);
-                frame.spel.revalidate();
+                revalidate();
                 break;
         }
     }
-
+    
 }

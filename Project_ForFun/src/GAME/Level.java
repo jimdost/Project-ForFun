@@ -14,13 +14,10 @@ import java.util.ArrayList;
 public class Level {
 
     private ArrayList<String[][]> mazeList;
-    private static final int VELDSIZE = 20;
+    private static final int VELDSIZE = 30;
     SpelPanel spelpanel;
     private Veld[][] bord;
     private Speler speler;
-    
-
-   
 
     public Level(int levelNumb) {        
         getMazes();
@@ -57,6 +54,7 @@ public class Level {
                     case "c":
                         Valsspeler valsspelerCreate = new Valsspeler();
                         v.setElement(valsspelerCreate);
+                        valsspelerCreate.level = this;
                         break;
                     case "r":
                         Bazooka bazookaCreate = new Bazooka();
@@ -178,46 +176,31 @@ public class Level {
         };
 
         String[][] Maze4 = {
-            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-            {x, s, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, p, p, m, m, m, m, p, p, p, p, p, p, p, p, p, m, p, m, p, p, p, x},
-            {x, p, m, m, m, m, p, m, p, m, p, m, m, m, p, m, p, m, m, p, m, p, p, m, p, m, m, m, m, m, m, m, p, m, p, m, p, m, p, x},
-            {x, p, m, p, p, p, p, m, p, m, p, m, r, m, p, m, p, m, m, p, m, p, m, m, p, m, p, p, p, p, p, p, p, m, p, m, p, m, p, x},
-            {x, p, m, p, m, m, p, p, p, m, p, m, p, p, p, m, p, m, p, p, p, p, p, p, p, m, p, m, m, m, m, m, m, m, p, m, p, m, p, x},
-            {x, p, m, p, m, m, m, m, p, m, p, m, p, m, m, m, p, m, p, m, m, m, m, m, p, m, p, m, p, p, p, p, p, p, p, m, p, m, p, x},
-            {x, p, m, p, p, p, p, p, p, m, p, m, p, m, p, p, p, m, p, m, p, p, p, p, p, m, p, m, p, m, m, m, m, m, p, m, p, m, p, x},
-            {x, p, m, m, m, p, m, m, m, m, p, m, p, m, p, m, m, m, m, m, p, m, m, m, m, m, p, m, p, m, p, p, p, m, p, m, p, m, p, x},
-            {x, p, p, p, p, p, p, p, p, p, p, m, p, p, p, m, p, p, p, p, p, p, p, p, p, m, p, m, p, p, p, m, p, m, p, p, p, m, p, x},
-            {x, m, m, m, m, p, m, m, m, m, m, m, m, m, p, m, p, m, m, m, m, m, m, m, p, m, p, m, m, m, m, m, p, m, p, m, p, m, p, x},
-            {x, p, p, p, m, p, p, m, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p, m, p, p, p, p, p, p, p, m, p, m, p, m, p, x},
-            {x, m, m, p, m, p, m, m, p, m, m, m, m, m, m, m, p, m, m, m, m, m, p, m, p, m, p, m, m, m, m, m, m, m, p, m, p, m, p, x},
-            {x, p, m, p, m, p, p, p, p, m, p, p, p, p, p, p, h, p, p, p, p, p, p, m, p, m, p, p, p, p, p, p, p, p, p, m, p, m, p, x},
-            {x, p, m, p, m, m, m, m, m, m, p, m, m, m, m, m, p, m, m, m, m, m, p, m, p, m, m, m, m, m, m, m, m, m, m, m, p, m, p, x},
-            {x, p, m, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, p, p, m, p, m, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, x},
-            {x, p, m, p, m, m, m, m, m, m, m, m, p, m, m, m, p, m, m, m, p, m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, x},
-            {x, p, m, p, m, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, p, m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, x},
-            {x, p, m, p, m, p, m, m, m, m, p, m, p, p, m, m, m, m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, x},
-            {x, p, m, p, m, p, m, p, p, p, p, p, p, p, p, m, p, p, p, m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, x},
-            {x, p, m, m, m, p, m, p, m, m, m, m, m, m, p, m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m, p, x},
-            {x, p, p, p, p, p, m, p, m, p, p, p, p, m, p, m, p, p, m, p, p, p, m, p, p, p, p, p, p, p, p, p, p, p, p, m, p, m, p, x},
-            {x, p, m, m, m, m, m, m, m, p, m, m, p, m, p, m, m, p, m, p, m, m, m, p, m, m, m, m, m, m, m, m, m, m, p, m, p, m, p, x},
-            {x, p, m, p, p, p, p, p, p, p, m, m, p, m, p, p, m, p, p, p, p, p, m, p, m, p, m, p, p, p, p, p, p, p, p, m, p, m, p, x},
-            {x, p, m, p, m, m, m, m, m, m, m, m, p, m, m, p, m, p, m, p, m, p, m, p, m, p, m, p, m, m, m, m, m, m, m, m, p, m, p, x},
-            {x, p, m, p, m, p, p, p, p, p, p, m, p, p, m, p, m, p, m, p, m, p, m, p, m, p, m, p, p, p, p, p, p, p, p, m, p, m, p, x},
-            {x, p, m, p, m, p, m, m, m, m, p, m, m, p, m, p, m, p, m, p, m, p, m, p, m, p, m, m, m, m, m, m, m, m, p, m, p, m, p, x},
-            {x, p, m, p, m, p, m, p, p, m, p, p, p, p, m, p, m, p, m, p, p, p, m, p, m, p, p, p, p, p, p, p, p, p, p, p, p, m, p, x},
-            {x, p, m, p, m, p, m, p, p, m, m, m, m, m, m, p, m, p, m, m, m, m, m, p, m, m, m, m, m, m, m, m, m, m, m, m, p, m, m, x},
-            {x, p, p, p, m, p, p, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, m, p, p, m, x},
-            {x, m, p, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, p, m, m, m, m, m, m, m, m, m, p, p, x},
-            {x, m, p, m, p, m, p, p, p, p, m, c, m, p, p, p, p, m, p, p, p, m, p, p, p, m, p, p, p, p, p, p, p, p, m, p, m, p, m, x},
-            {x, p, p, m, p, p, p, m, m, p, m, p, m, p, m, m, p, p, p, m, p, m, p, m, p, p, p, m, p, m, m, m, m, p, m, p, p, p, m, x},
-            {x, p, m, m, p, m, m, m, p, p, m, p, p, p, m, p, p, m, m, m, p, m, p, m, m, m, m, m, p, m, p, p, m, p, m, p, m, p, p, x},
-            {x, p, p, p, p, m, m, p, p, m, m, m, p, m, m, p, m, m, p, p, p, m, p, p, p, p, m, p, p, m, p, m, m, p, m, m, m, m, p, x},
-            {x, m, m, m, p, m, p, p, m, m, p, m, p, p, m, p, v, m, p, m, p, m, m, m, m, p, m, m, p, p, p, m, p, p, p, p, m, p, p, x},
-            {x, m, p, m, p, m, p, m, m, p, p, p, m, p, m, m, m, m, m, m, p, p, p, m, p, p, p, m, m, m, m, m, p, m, m, p, m, p, m, x},
-            {x, m, p, p, p, m, p, m, p, p, m, m, m, p, m, p, p, p, p, m, m, m, p, m, m, m, p, m, p, p, p, p, m, m, m, p, m, p, p, x},
-            {x, m, p, m, m, m, p, p, p, m, m, p, p, p, m, p, m, m, p, m, p, m, p, p, p, m, p, m, p, m, m, m, m, p, m, p, m, m, p, x},
-            {x, m, p, p, p, m, m, m, p, p, p, p, m, p, p, p, m, p, p, m, p, p, p, m, p, p, p, m, p, p, p, p, p, p, m, p, p, p, p, x},
-            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
+            {x, s, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, p, p, m, m, m, m, p},
+            {x, p, m, m, m, m, p, m, p, m, p, m, m, m, p, m, p, m, m, p, m, p, p, m, p},
+            {x, p, m, p, p, p, p, m, p, m, p, m, r, m, p, m, p, m, m, p, m, p, m, m, p},
+            {x, p, m, p, m, m, p, p, p, m, p, m, p, p, p, m, p, m, p, p, p, p, p, p, p},
+            {x, p, m, p, m, m, m, m, p, m, p, m, p, m, m, m, p, m, p, m, m, m, m, m, p},
+            {x, p, m, p, p, p, p, p, p, m, p, m, p, m, p, p, p, m, p, m, p, p, p, p, p},
+            {x, p, m, m, m, p, m, m, m, m, p, m, p, m, p, m, m, m, m, m, p, m, m, m, m},
+            {x, p, p, p, p, p, p, p, p, p, p, m, p, p, p, m, p, p, p, p, p, p, p, p, p},
+            {x, m, m, m, m, p, m, m, m, m, m, m, m, m, p, m, p, m, m, m, m, m, m, m, p},
+            {x, p, p, p, m, p, p, m, p, p, p, p, p, p, p, p, p, m, p, p, p, p, p, m, p},
+            {x, m, m, p, m, p, m, m, p, m, m, m, m, m, m, m, p, m, m, m, m, m, p, m, p},
+            {x, p, m, p, m, p, p, p, p, m, p, p, p, p, p, p, h, p, p, p, p, p, p, m, p},
+            {x, p, m, p, m, m, m, m, m, m, p, m, m, m, m, m, p, m, m, m, m, m, p, m, p},
+            {x, p, m, p, p, p, p, p, p, p, p, m, p, p, p, p, p, p, p, p, p, m, p, m, p},
+            {x, p, m, p, m, m, m, m, m, m, m, m, p, m, m, m, p, m, m, m, p, m, p, m, m},
+            {x, p, m, p, m, p, p, p, p, p, p, m, p, p, p, p, p, m, p, p, p, m, p, p, p},
+            {x, p, m, p, m, p, m, m, m, m, p, m, p, p, m, m, m, m, p, m, m, m, m, m, m},
+            {x, p, m, p, m, p, m, p, p, p, p, p, p, p, p, m, p, p, p, m, p, p, p, p, p},
+            {x, p, m, m, m, p, m, p, m, m, m, m, m, m, p, m, p, m, m, m, m, m, m, m, m},
+            {x, p, p, p, p, p, m, p, m, p, p, p, p, m, p, m, p, p, m, p, p, p, m, p, p},
+            {x, p, m, m, m, m, m, m, m, p, m, m, p, m, p, m, m, p, m, p, m, m, m, p, m},
+            {x, p, m, p, p, p, p, p, p, p, m, m, p, m, p, p, m, p, p, p, p, p, m, p, m},
+            {x, p, m, p, m, m, m, m, m, m, m, m, p, m, m, p, m, p, m, p, m, p, m, v, m},
+            {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},};
 
         mazeList.add(Maze1);
         mazeList.add(Maze2);

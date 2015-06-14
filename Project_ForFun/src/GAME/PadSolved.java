@@ -24,6 +24,6 @@ public class PadSolved extends Element{
         super.paintComponent(g);  
         
         g.setColor(Color.ORANGE);
-        g.fillRect(6, 6, 8, 8);
-    }    
+        g.fillRect(11, 11, 8, 8);
+    }  
 }

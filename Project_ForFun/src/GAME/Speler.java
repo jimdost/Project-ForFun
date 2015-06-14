@@ -11,15 +11,16 @@ import java.awt.Graphics2D;
 import static java.lang.Thread.sleep;
 import java.util.logging.Logger;
 
+
 /**
  *
  * @author wytze
  */
 public class Speler extends Element {
 
-    private boolean hasItem;
-    private int sizeSpeler = 16;
-    private int sizeBorderSpeler = 2;
+    private int sizeSpeler = 22;
+    private int sizeBorderSpeler = 4;
+    
 
     Thread t = new Thread() {
 
@@ -83,12 +84,14 @@ public class Speler extends Element {
         super.paintComponent(g);        
         Graphics2D g2 = (Graphics2D) g.create();        
         g.setColor(Color.yellow);
-        g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler);  
+        g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler); 
+         
         g2.dispose();
+        
     }
 
     private void animation() {
-        if (sizeSpeler > 15) {
+        if (sizeSpeler > 20) {
             sizeSpeler = sizeSpeler - 2;
             sizeBorderSpeler = sizeBorderSpeler + 1;
         } else {

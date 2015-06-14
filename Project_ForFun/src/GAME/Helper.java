@@ -31,7 +31,7 @@ public class Helper extends Item {
         super.paintComponent(g);
 
         g.setColor(Color.pink);
-        g.fillOval(2, 2, 16, 16);
+        g.fillOval(5, 5, 20, 20);
 
     }
 
