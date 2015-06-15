@@ -20,20 +20,22 @@ import javax.swing.JPanel;
 public class MenuPanel extends JPanel implements ActionListener {
 
     Frame frame;
-    int levelnummer = 0;
+    JLabel menuLable;
+    JButton resetButton;    
+    private int levelnummer = 0;
 
     public MenuPanel() {
         setBackground(Color.BLUE);
 
-        JLabel label = new JLabel("The Maze Game                                      ");
-        label.setForeground(Color.WHITE);
+        JLabel menuLable = new JLabel("The Maze Game                                      ");
+        menuLable.setForeground(Color.WHITE);
 
         JButton resetButton = new JButton("Reset");
         resetButton.setBackground(Color.blue);
         resetButton.setFocusable(false);
         resetButton.addActionListener(this);        
 
-        add(label, new FlowLayout(FlowLayout.LEFT));
+        add(menuLable, new FlowLayout(FlowLayout.LEFT));
         add(resetButton, new FlowLayout(FlowLayout.RIGHT));        
     }
 

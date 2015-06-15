@@ -7,6 +7,9 @@ package GAME;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -39,12 +42,10 @@ public class Muur extends Element {
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, 30, 30);
-        
-        g.setColor(Color.WHITE);
-        g.fillRect(3, 3, 23, 23);
+        Graphics2D g2 = (Graphics2D) g.create();        
+        Image i = new ImageIcon(getClass().getClassLoader().getResource("Images/WallBricks.png")).getImage();
+        g2.drawImage(i, 0, 0, 30, 30, null, this);
+        g2.dispose();
 
     }
 

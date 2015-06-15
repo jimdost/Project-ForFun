@@ -8,9 +8,10 @@ package GAME;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import static java.lang.Thread.sleep;
 import java.util.logging.Logger;
-
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,9 +19,8 @@ import java.util.logging.Logger;
  */
 public class Speler extends Element {
 
-    private int sizeSpeler = 22;
-    private int sizeBorderSpeler = 4;
-    
+    private int sizeSpeler = 30;
+    private int sizeBorderSpeler = 0;
 
     Thread t = new Thread() {
 
@@ -61,41 +61,39 @@ public class Speler extends Element {
 
     public void move(String direction) {
 
-        veld.getBuuren(veld.getPositieY(), veld.getPositieX());         
+        veld.getBuuren(veld.getPositieY(), veld.getPositieX());
 
         if ((veld.buren.get(direction).getElement() == null) || (veld.buren.get(direction).getElement().getLoopbaar())) {
-            if(veld.buren.get(direction).getElement() instanceof Item){
-                Item i = (Item) veld.buren.get(direction).getElement();                
-                i.pakOp(); 
+            if (veld.buren.get(direction).getElement() instanceof Item) {
+                Item i = (Item) veld.buren.get(direction).getElement();
+                i.pakOp();
             }
-            if(veld.buren.get(direction).getElement() == null){
-               
-            } 
-            
+            if (veld.buren.get(direction).getElement() == null) {
+
+            }
+
             veld.setElement(null);
             veld.buren.get(direction).setElement(this);
-            (this).setVeld(veld.buren.get(direction)); 
+            (this).setVeld(veld.buren.get(direction));
         }
     }
 
     @Override
     public void paintComponent(Graphics g) {
 
-        super.paintComponent(g);        
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g.create();        
-        g.setColor(Color.yellow);
-        g.fillOval(sizeBorderSpeler, sizeBorderSpeler, sizeSpeler, sizeSpeler); 
-         
+        Image i = new ImageIcon(getClass().getClassLoader().getResource("Images/player.png")).getImage();
+        g2.drawImage(i, 0, sizeBorderSpeler, 30, sizeSpeler, null, this);
         g2.dispose();
-        
     }
 
     private void animation() {
-        if (sizeSpeler > 20) {
-            sizeSpeler = sizeSpeler - 2;
+        if (sizeSpeler > 29) {
+            sizeSpeler = sizeSpeler - 1;
             sizeBorderSpeler = sizeBorderSpeler + 1;
         } else {
-            sizeSpeler = sizeSpeler + 2;
+            sizeSpeler = sizeSpeler + 1;
             sizeBorderSpeler = sizeBorderSpeler - 1;
         }
         repaint();

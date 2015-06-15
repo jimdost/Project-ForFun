@@ -8,6 +8,8 @@ package GAME;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -29,9 +31,10 @@ public class Helper extends Item {
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-
-        g.setColor(Color.pink);
-        g.fillOval(5, 5, 20, 20);
+        Graphics2D g2 = (Graphics2D) g.create();        
+        Image i = new ImageIcon(getClass().getClassLoader().getResource("Images/Helper.png")).getImage();
+        g2.drawImage(i, 0, 0, 30, 30, null, this);
+        g2.dispose();
 
     }
 

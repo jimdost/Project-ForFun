@@ -6,6 +6,9 @@ package GAME;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -26,11 +29,11 @@ public class Bazooka extends Item {
     @Override
     public void paintComponent(Graphics g) {
         
-        super.paintComponent(g);
-        
-        Color c = new Color(0, 0, 255);
-        g.setColor(c);
-        g.fillOval(5, 5, 20, 20);
+        super.paintComponent(g);        
+        Graphics2D g2 = (Graphics2D) g.create();          
+        Image i = new ImageIcon(getClass().getClassLoader().getResource("Images/Bazooka.png")).getImage();
+        g2.drawImage(i, 0, 0, 30, 30, null, this);
+        g2.dispose();
     }
     
 }

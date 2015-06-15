@@ -23,7 +23,7 @@ public final class SpelPanel extends JPanel implements ActionListener {
 
     private final Veld[][] bord;
     private Level level;
-    private JLabel stapppenLable;
+    private final JLabel stapppenLable;
     public int aantalStappen;
     Frame frame;
 
@@ -38,7 +38,7 @@ public final class SpelPanel extends JPanel implements ActionListener {
         stapppenLable = new JLabel("Move teller:  " +aantalStappen);
         stapppenLable.setBounds(380, 0, 200, 25);
         stapppenLable.setFont(new Font("Serif", Font.PLAIN, 26));
-        stapppenLable.setForeground(Color.red);
+        stapppenLable.setForeground(Color.white);
         add(stapppenLable);
         
         DrawLevel();

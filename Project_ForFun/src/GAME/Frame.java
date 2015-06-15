@@ -19,9 +19,9 @@ public final class Frame extends JFrame{
     private final int frameHeight = 600;
     private final int frameWidh = 400;
     private final Keyboard KEYBBOARD;
-    MenuPanel menu;
-    SpelPanel spel;
-    static int levelNr = 0;
+    private MenuPanel menu;
+    protected SpelPanel spel;
+    protected static int levelNr = 0;
 
     public Frame() {
         setSize(frameWidh, frameHeight);        

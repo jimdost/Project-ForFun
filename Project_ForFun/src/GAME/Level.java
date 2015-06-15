@@ -153,7 +153,7 @@ public class Level {
 
         String[][] Maze3 = {
             {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x},
-            {x, s, p, p, p, p, p, p, p, p, h, p, p, p, p, p, p, p, p, r, x},
+            {x, s, m, p, p, p, p, p, p, p, h, p, p, p, p, p, p, p, p, r, x},
             {x, p, m, m, m, m, m, m, m, m, p, m, m, m, m, m, m, m, m, p, x},
             {x, p, p, m, v, p, p, m, p, p, p, p, p, p, p, p, p, p, m, p, x},
             {x, m, p, m, m, m, p, m, m, m, m, m, m, m, m, m, m, p, m, p, x},
