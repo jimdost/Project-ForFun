@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
  */
 public class Muur extends Element {
 
-    int sterkte;
+    private int sterkte;
     
     Muur(int sterkte) {        
         setLoopbaar(false);        
@@ -25,9 +25,7 @@ public class Muur extends Element {
     }
     
     public void gethit(Raket r){
-        System.out.println(sterkte);
         sterkte = sterkte - r.getSterkteExplosie();
-        System.out.println(sterkte);
         if(sterkte <= 0){
             veld.setElement(null);
             this.setVisible(false);

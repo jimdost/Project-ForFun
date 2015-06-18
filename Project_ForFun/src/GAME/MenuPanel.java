@@ -19,23 +19,24 @@ import javax.swing.JPanel;
  */
 public class MenuPanel extends JPanel implements ActionListener {
 
-    Frame frame;
-    JLabel menuLable;
-    JButton resetButton;
+    private Frame frame;
+    private SpelPanel spel;
+    private final JLabel MENULABEL;
+    private final JButton RESETBUTTON;
 
     public MenuPanel() {
         setBackground(Color.BLUE);
 
-        menuLable = new JLabel("The Maze Game                                      ");
-        menuLable.setForeground(Color.WHITE);
+        MENULABEL = new JLabel("The Maze Game                                      ");
+        MENULABEL.setForeground(Color.WHITE);
 
-        resetButton = new JButton("Reset");
-        resetButton.setBackground(Color.blue);
-        resetButton.setFocusable(false);
-        resetButton.addActionListener(this);        
+        RESETBUTTON = new JButton("Reset");
+        RESETBUTTON.setBackground(Color.blue);
+        RESETBUTTON.setFocusable(false);
+        RESETBUTTON.addActionListener(this);        
 
-        add(menuLable, new FlowLayout(FlowLayout.LEFT));
-        add(resetButton, new FlowLayout(FlowLayout.RIGHT));        
+        add(MENULABEL, new FlowLayout(FlowLayout.LEFT));
+        add(RESETBUTTON, new FlowLayout(FlowLayout.RIGHT));        
     }
 
     @Override
@@ -50,10 +51,14 @@ public class MenuPanel extends JPanel implements ActionListener {
         }
     }
 
+    public void setSpel(SpelPanel spel) {
+        this.spel = spel;
+    }
+
     private void resetLevel() {
-        frame.remove(frame.spel);
+        frame.remove(spel);
         frame.setSpelComponents(Frame.levelNr);
-        frame.spel.revalidate();  
+        spel.revalidate();  
     }
 
     public void setFrame(Frame frame) {

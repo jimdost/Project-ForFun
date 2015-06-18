@@ -47,9 +47,8 @@ public class Speler extends Element {
 
     public void move(String direction) {
 
-        Veld buur = veld.level.getBuuren(veld.veltCordinateY, veld.veltCordinateX, direction);
+        Veld buur = veld.getLevel().getBuuren(veld.getPositieY(), veld.getPositieX(), direction);
         this.direction = direction;
-        System.out.println(buur.getElement());
 
         if (buur.getElement() == null || buur.getElement().getLoopbaar()) {
             if (buur.getElement() instanceof Item) {
@@ -58,6 +57,8 @@ public class Speler extends Element {
             }
             veld.setElement(null);
             buur.setElement(this);
+            veld.getLevel().spelpanel.UpdateVeld(this.getVeld());
+            veld.getLevel().spelpanel.updateAantalStappen();
         }
     }
 
@@ -71,7 +72,7 @@ public class Speler extends Element {
     }
 
     public void setList(Raket r) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 200; i++) {
             lijstRakketen.add(r);
         }
     }

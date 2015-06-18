@@ -20,7 +20,7 @@ public final class Frame extends JFrame{
     private final int frameWidh = 400;
     private final Keyboard KEYBBOARD;
     private MenuPanel menu;
-    protected SpelPanel spel;
+    private SpelPanel spel;
     protected static int levelNr = 0;
 
     public Frame() {
@@ -36,6 +36,7 @@ public final class Frame extends JFrame{
         menu = new MenuPanel();         
         add(menu , BorderLayout.NORTH);
         menu.setFrame(this);
+        menu.setSpel(spel);
     }
     
     public void setSpelComponents(int levelNr){

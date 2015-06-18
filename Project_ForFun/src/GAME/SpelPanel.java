@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 /**
  *
  * @author wytze
@@ -24,8 +23,8 @@ public final class SpelPanel extends JPanel implements ActionListener {
     private final Veld[][] bord;
     private Level level;
     private final JLabel stapppenLable;
-    public int aantalStappen;
-    Frame frame;
+    protected int aantalStappen;
+    private Frame frame;
 
     public SpelPanel(int levelnummer) {
         setLayout(null);
@@ -34,16 +33,16 @@ public final class SpelPanel extends JPanel implements ActionListener {
         level = new Level(levelnummer);
         level.spelpanel = (this);
         bord = level.getBord();
-        
-        stapppenLable = new JLabel("Move teller:  " +aantalStappen);
+
+        stapppenLable = new JLabel("Move teller:  " + aantalStappen);
         stapppenLable.setBounds(380, 0, 200, 25);
         stapppenLable.setFont(new Font("Serif", Font.PLAIN, 26));
         stapppenLable.setForeground(Color.white);
         add(stapppenLable);
-        
+
         DrawLevel();
 
-        setSize(bord.length * level.getVeltSize() + 5, bord.length * level.getVeltSize() + 62);         
+        setSize(bord.length * level.getVeltSize() + 5, bord.length * level.getVeltSize() + 62);
         setBackground(Color.gray);
         revalidate();
     }
@@ -67,47 +66,12 @@ public final class SpelPanel extends JPanel implements ActionListener {
         revalidate();
         repaint();
     }
-    
-    protected void DrawVeld(Veld v) {
-        int xB = 0;
-        int yB = 0;
 
-        for (Veld[] bord1 : bord) {
-            for (int y = 0; y < bord.length; y++) {
-                if (bord1[y].getElement() != null) {
-                    Veld veld = bord1[y];
-                    veld.getElement().setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
-                    add(veld.getElement());
-                }
-                xB = xB + level.getVeltSize();
-            }
-            yB = yB + level.getVeltSize();
-            xB = 0;
-        }
-        
-        repaint();
-    }
-    
+    protected void UpdateVeld(Veld veld) {
 
-    protected void UpdateLevel() {
-        int xB = 0;
-        int yB = 0;
-
-        for (Veld[] bord1 : bord) {
-            for (int y = 0; y < bord.length; y++) {
-                if (bord1[y].getElement() instanceof Speler) {
-                    Veld veld = bord1[y];
-                    veld.getElement().setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
-                    add(veld.getElement());
-                }
-                xB = xB + level.getVeltSize();
-            }
-            yB = yB + level.getVeltSize();
-            xB = 0;
-        }
-        aantalStappen++;
-        stapppenLable.setText("Move teller:  " +aantalStappen);
-        repaint();  
+        veld.getElement().setBounds(veld.getPositieX() * level.getVeltSize(), veld.getPositieY() * level.getVeltSize(), level.getVeltSize(), level.getVeltSize());
+        add(veld.getElement());
+        veld.getElement().repaint();
     }
 
     protected void DrawWin() {
@@ -147,18 +111,24 @@ public final class SpelPanel extends JPanel implements ActionListener {
         this.frame = frame;
     }
 
+    protected void updateAantalStappen() {
+        aantalStappen++;
+        stapppenLable.setText("Move teller:  " + aantalStappen);
+        repaint();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         String action = e.getActionCommand();
         switch (action) {
-            case "next level":                 
-                frame.remove(frame.spel);
+            case "next level":
+                frame.remove(this);
                 Frame.setLevelNr(1);
                 frame.setSpelComponents(Frame.levelNr);
                 revalidate();
                 break;
         }
     }
-    
+
 }

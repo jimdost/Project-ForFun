@@ -7,9 +7,6 @@ package GAME;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import static java.lang.Thread.sleep;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -44,8 +41,7 @@ public class Keyboard implements KeyListener {
         }   
         if (keycode == KeyEvent.VK_SPACE) {
             speler.schiet();
-        }   
-        spelpanel.UpdateLevel();        
+        }                
     }
 
     @Override

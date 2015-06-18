@@ -30,7 +30,7 @@ public class Valsspeler extends Item{
     @Override
     protected void pakOp() {        
         System.out.println("ValsSpeler");   
-        veld.level.spelpanel.aantalStappen = veld.level.spelpanel.aantalStappen - cheatingAantalStappen;
+        veld.getLevel().spelpanel.aantalStappen = veld.getLevel().spelpanel.aantalStappen - cheatingAantalStappen;
         setVisible(false);
     }
     

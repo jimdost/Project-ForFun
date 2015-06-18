@@ -38,19 +38,19 @@ public class Helper extends Item {
 
     }
 
-    static int shortestpath[];
-    static int shortestlength;
-    Veld[][] daMaze;
-    int mazeSize;
-    int VriendX;
-    int VriendY;
+    private static int shortestpath[];
+    private static int shortestlength;
+    private Veld[][] daMaze;
+    private int mazeSize;
+    private int VriendX;
+    private int VriendY;
 
     public void solveGame() {
 
         int x;				/*various counters*/
         int pathsofar[];		/*Path to get started with*/
         int lengthsofar;		/*length to get started with*/        
-        daMaze = veld.level.getBord();                /*the maze object*/
+        daMaze = veld.getLevel().getBord();                /*the maze object*/
         mazeSize = daMaze.length;
         shortestpath = new int[mazeSize * mazeSize];
 
@@ -72,12 +72,7 @@ public class Helper extends Item {
     }
 
     public void findpath(int row, int col, int pathsofar[], int lengthsofar) {
-        /*This is the recursive function that finds the paths.  When it
-         does find a valid path, it outputs it then stores it into
-         shortestpath if is is shorter that what is currently held*/
-
-        /*These 3 statements are the termination conditions:
-         out of bounds,  wall, and previously visited, respectively*/
+        
         if (veld.getPositieY() < 0 || veld.getPositieX() < 0 || row >= mazeSize || col >= mazeSize) {
             return;
         }
@@ -89,27 +84,17 @@ public class Helper extends Item {
         }
         int mypath[] = new int[lengthsofar + 1];
 
-        System.arraycopy(pathsofar, 0, mypath, 0, lengthsofar);
-        /*for local copy for proper backtracking*/
-        mypath[lengthsofar++] = row * mazeSize + col;  /*adds this square to
-         traveled path*/
+        System.arraycopy(pathsofar, 0, mypath, 0, lengthsofar);        
+        mypath[lengthsofar++] = row * mazeSize + col;  
 
         vindVriend();
-        if (row == VriendY && col == VriendX) {
-            /*Reached the end, thus finding a valid path*/
-
-            //System.out.println("Found path of length " + lengthsofar + "!:");
+        if (row == VriendY && col == VriendX) {            
             if (lengthsofar <= shortestlength) { /*New shortest path?*/
-
                 shortestlength = lengthsofar;
-                System.arraycopy(mypath, 0, shortestpath, 0, lengthsofar);
-                //System.out.println(" (New shortest path of length " + lengthsofar + ")");
+                System.arraycopy(mypath, 0, shortestpath, 0, lengthsofar);                
             }
-            //System.out.println("");
             return;
         }
-
-        /*Below, recursively call to go to other squares*/
         findpath(row - 1, col, mypath, lengthsofar);
         findpath(row, col - 1, mypath, lengthsofar);
         findpath(row, col + 1, mypath, lengthsofar);
@@ -117,9 +102,7 @@ public class Helper extends Item {
     }
 
     boolean beenhere(int row, int col, int pathsofar[], int lengthsofar) {
-        /*this private boolean function tells if this spot (row,col) has
-         been visited before*/
-
+        
         int x;
         int target = row * mazeSize + col;  /*this computation gives a unique
          id to each maze square*/
@@ -138,12 +121,12 @@ public class Helper extends Item {
             for (int c = 0; c < mazeSize; c++) {
                 if (beenhere(r, c, mypath, mylength) && !(daMaze[r][c].getElement() instanceof Vriend) && !(daMaze[r][c].getElement() instanceof Item)) {
                     PadSolved padSolveCreate = new PadSolved();                    
-                    daMaze[r][c].setElement(padSolveCreate);                    
+                    daMaze[r][c].setElement(padSolveCreate);   
+                    veld.getLevel().spelpanel.UpdateVeld(padSolveCreate.getVeld());
                     daMaze[r][c].setElement(null); 
                 }
             }
-        }
-        
+        }        
     }
 
     public void vindVriend() {

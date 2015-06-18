@@ -5,7 +5,7 @@
  */
 package GAME;
 
-import java.util.HashMap;
+
 
 /**
  *
@@ -13,10 +13,10 @@ import java.util.HashMap;
  */
 public class Veld {
 
-    int veltCordinateX;
-    int veltCordinateY;
-    Element element;
-    Level level;
+    private int veltCordinateX;
+    private int veltCordinateY;
+    private Element element;
+    private Level level;
 
     Veld() {
 
@@ -41,6 +41,10 @@ public class Veld {
 
     public int getPositieY() {
         return veltCordinateY;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
     protected void setPositieX(int posX) {

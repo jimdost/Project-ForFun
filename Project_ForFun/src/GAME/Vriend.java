@@ -20,7 +20,7 @@ public class Vriend extends Item {
    
     @Override
     protected void pakOp() {   
-        veld.level.spelpanel.DrawWin();         
+        veld.getLevel().spelpanel.DrawWin();         
     }
     
     @Override
@@ -28,7 +28,7 @@ public class Vriend extends Item {
         super.paintComponent(g);
 
         g.setColor(Color.green);        
-        g.fillRect(5, 5, veld.level.getVeltSize() * 2/3, veld.level.getVeltSize() * 2/3);
+        g.fillRect(5, 5, veld.getLevel().getVeltSize() * 2/3, veld.getLevel().getVeltSize() * 2/3);
         
     }
 }

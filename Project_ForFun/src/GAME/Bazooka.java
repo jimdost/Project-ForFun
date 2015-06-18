@@ -23,7 +23,7 @@ public class Bazooka extends Item {
     @Override
     protected void pakOp() {
         Raket r = new Raket();
-        veld.level.getSpeler().setList(r);
+        veld.getLevel().getSpeler().setList(r);
         setVisible(false);
     }
     
