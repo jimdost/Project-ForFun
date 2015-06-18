@@ -4,15 +4,19 @@
  */
 package GAME;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author Tiko
  */
-public class Raket {
-    int sterkteExplosie;
+public class Raket extends Element {
 
-    public Raket(int sterkteExplosie) {
-        this.sterkteExplosie = sterkteExplosie;
+    int sterkteExplosie = 5;
+
+    public Raket() {
+
     }
 
     public int getSterkteExplosie() {
@@ -23,10 +27,27 @@ public class Raket {
         this.sterkteExplosie = sterkteExplosie;
     }
 
+    int afstand = 0;
+
     void move(String direction) {
-        //While the rocket hasn't touched a wall, move in the direction of shooting.
-        //When contacted with the wall, subtract explosion damage from wall strength.
+        
+        System.out.println("piew");
+
+        Veld buur = veld.level.getBuuren(veld.veltCordinateY, veld.veltCordinateX, direction);
+        veld.setElement(null);
+        if (buur.element == null) {
+            buur.setElement(this);
+            move(direction);
+        }
+        if (buur.element instanceof Item) {            
+            Veld veldItem = buur.level.getBuuren(buur.veltCordinateY, buur.veltCordinateX, direction);
+            System.out.println(veldItem.veltCordinateX);
+            veldItem.setElement(this);             
+        }
+        if (buur.element instanceof Muur) {
+            Muur muur = (Muur) buur.getElement();
+            muur.gethit(this);
+            muur.setVisible(false);
+        }
     }
-    
-    
 }

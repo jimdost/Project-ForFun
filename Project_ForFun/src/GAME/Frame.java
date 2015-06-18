@@ -29,21 +29,29 @@ public final class Frame extends JFrame{
         KEYBBOARD = new Keyboard();        
         addKeyListener(KEYBBOARD);  
         createMenuComponents();  
-        createSpelComponents(levelNr);
+        setSpelComponents(levelNr);
     }
     
     private void createMenuComponents(){
         menu = new MenuPanel();         
         add(menu , BorderLayout.NORTH);
-        menu.frame = (this);
+        menu.setFrame(this);
     }
     
-    public void createSpelComponents(int levelNr){
+    public void setSpelComponents(int levelNr){
         spel = new SpelPanel(levelNr);
-        spel.frame = (this);
+        spel.setFrame(this);
         KEYBBOARD.speler = spel.getLevel().getSpeler();
         KEYBBOARD.spelpanel = spel;        
         add(spel , BorderLayout.CENTER);
         setSize(spel.getSize());
     }
+
+    public static int getLevelNr() {
+        return levelNr;
+    }
+
+    public static void setLevelNr(int levelNr) {
+        Frame.levelNr = Frame.levelNr + levelNr;
+    }    
 }

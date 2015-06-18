@@ -5,7 +5,7 @@
  */
 package GAME;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -49,8 +49,8 @@ public class Helper extends Item {
 
         int x;				/*various counters*/
         int pathsofar[];		/*Path to get started with*/
-        int lengthsofar;		/*length to get started with*/
-        daMaze = veld.bord;                /*the maze object*/
+        int lengthsofar;		/*length to get started with*/        
+        daMaze = veld.level.getBord();                /*the maze object*/
         mazeSize = daMaze.length;
         shortestpath = new int[mazeSize * mazeSize];
 
@@ -138,10 +138,12 @@ public class Helper extends Item {
             for (int c = 0; c < mazeSize; c++) {
                 if (beenhere(r, c, mypath, mylength) && !(daMaze[r][c].getElement() instanceof Vriend) && !(daMaze[r][c].getElement() instanceof Item)) {
                     PadSolved padSolveCreate = new PadSolved();                    
-                    daMaze[r][c].setElement(padSolveCreate);
+                    daMaze[r][c].setElement(padSolveCreate);                    
+                    daMaze[r][c].setElement(null); 
                 }
             }
         }
+        
     }
 
     public void vindVriend() {

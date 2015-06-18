@@ -21,16 +21,15 @@ public class MenuPanel extends JPanel implements ActionListener {
 
     Frame frame;
     JLabel menuLable;
-    JButton resetButton;    
-    private int levelnummer = 0;
+    JButton resetButton;
 
     public MenuPanel() {
         setBackground(Color.BLUE);
 
-        JLabel menuLable = new JLabel("The Maze Game                                      ");
+        menuLable = new JLabel("The Maze Game                                      ");
         menuLable.setForeground(Color.WHITE);
 
-        JButton resetButton = new JButton("Reset");
+        resetButton = new JButton("Reset");
         resetButton.setBackground(Color.blue);
         resetButton.setFocusable(false);
         resetButton.addActionListener(this);        
@@ -53,7 +52,12 @@ public class MenuPanel extends JPanel implements ActionListener {
 
     private void resetLevel() {
         frame.remove(frame.spel);
-        frame.createSpelComponents(Frame.levelNr);
+        frame.setSpelComponents(Frame.levelNr);
         frame.spel.revalidate();  
     }
+
+    public void setFrame(Frame frame) {
+        this.frame = frame;
+    }
+    
 }

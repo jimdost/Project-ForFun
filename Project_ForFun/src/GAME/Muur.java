@@ -19,10 +19,19 @@ public class Muur extends Element {
 
     int sterkte;
     
-    Muur(int sterkte) {
-        
+    Muur(int sterkte) {        
         setLoopbaar(false);        
         this. sterkte = sterkte;
+    }
+    
+    public void gethit(Raket r){
+        System.out.println(sterkte);
+        sterkte = sterkte - r.getSterkteExplosie();
+        System.out.println(sterkte);
+        if(sterkte <= 0){
+            veld.setElement(null);
+            this.setVisible(false);
+        }
     }
 
     public int getSterkte() {
@@ -32,11 +41,7 @@ public class Muur extends Element {
     public void setSterkte(int sterkte) {
         this.sterkte = sterkte;
     }
-
-    public void destroyWall()
-    {
-        //The wall that has been hit by the rocket will be destroyed.
-    }
+ 
     
     @Override
     public void paintComponent(Graphics g) {

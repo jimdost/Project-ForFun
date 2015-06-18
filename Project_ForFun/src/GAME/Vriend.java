@@ -14,16 +14,13 @@ import java.awt.Graphics;
  */
 public class Vriend extends Item {
 
-    Level level;
-
     Vriend() {
               
     }
    
     @Override
     protected void pakOp() {   
-        level.spelpanel.DrawWin();
-        level.getSpeler().setVisible(false);
+        veld.level.spelpanel.DrawWin();         
     }
     
     @Override
@@ -31,7 +28,7 @@ public class Vriend extends Item {
         super.paintComponent(g);
 
         g.setColor(Color.green);        
-        g.fillRect(5, 5, 20, 20);
+        g.fillRect(5, 5, veld.level.getVeltSize() * 2/3, veld.level.getVeltSize() * 2/3);
         
     }
 }

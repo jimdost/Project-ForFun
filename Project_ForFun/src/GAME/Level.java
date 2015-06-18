@@ -6,6 +6,7 @@
 package GAME;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -18,10 +19,23 @@ public class Level {
     SpelPanel spelpanel;
     private Veld[][] bord;
     private Speler speler;
+    HashMap<String, Veld> buren;
 
-    public Level(int levelNumb) {        
+    public Level(int levelNumb) {
         getMazes();
         MazeToBord(levelNumb);
+    }
+
+    protected Veld getBuuren(int positieY, int positieX, String Direction) { 
+
+        buren = new HashMap<>();
+
+        buren.put("UP", bord[positieY - 1][positieX]);
+        buren.put("DOWN", bord[positieY + 1][positieX]);
+        buren.put("LEFT", bord[positieY][positieX - 1]);
+        buren.put("RIGHT", bord[positieY][positieX + 1]);
+
+        return buren.get(Direction);
     }
 
     private Veld[][] MazeToBord(int levelNumb) {
@@ -34,27 +48,24 @@ public class Level {
                 Veld v = new Veld();
                 switch (levelOpzet[x][y]) {
                     case "Bm":
-                        Muur muurCreateBuiten = new Muur(100000);
+                        Muur muurCreateBuiten = new Muur(1000);
                         v.setElement(muurCreateBuiten);
                         break;
                     case "bm":
-                        Muur muurCreateBinnen = new Muur(500);
+                        Muur muurCreateBinnen = new Muur(5);
                         v.setElement(muurCreateBinnen);
                         break;
                     case "v":
                         Vriend vriendCreate = new Vriend();
                         v.setElement(vriendCreate);
-                        vriendCreate.level = this;
                         break;
                     case "h":
                         Helper helperCreate = new Helper();
                         v.setElement(helperCreate);
-                        helperCreate.setVeld(v);
                         break;
                     case "c":
                         Valsspeler valsspelerCreate = new Valsspeler();
                         v.setElement(valsspelerCreate);
-                        valsspelerCreate.level = this;
                         break;
                     case "r":
                         Bazooka bazookaCreate = new Bazooka();
@@ -63,12 +74,11 @@ public class Level {
                     case "s":
                         speler = new Speler();
                         v.setElement(speler);
-                        speler.setVeld(v);
                         break;
                 }
+                v.setLevel(this);
                 v.setPositieX(y);
                 v.setPositieY(x);
-                v.bord = bord;
                 bord[x][y] = v;
             }
         }
@@ -90,7 +100,7 @@ public class Level {
     public Speler getSpeler() {
         return speler;
     }
-
+    
     private void getMazes() {
 
         mazeList = new ArrayList<>();

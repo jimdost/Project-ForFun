@@ -21,8 +21,9 @@ public class Bazooka extends Item {
     }
     
     @Override
-    protected void pakOp() {        
-        System.out.println("Bazooka");              
+    protected void pakOp() {
+        Raket r = new Raket();
+        veld.level.getSpeler().setList(r);
         setVisible(false);
     }
     

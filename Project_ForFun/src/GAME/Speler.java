@@ -5,11 +5,12 @@
  */
 package GAME;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.List;
 import static java.lang.Thread.sleep;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
@@ -21,6 +22,8 @@ public class Speler extends Element {
 
     private int sizeSpeler = 30;
     private int sizeBorderSpeler = 0;
+    private String direction = "RIGHT";
+    private ArrayList<Raket> lijstRakketen = new ArrayList<>();
 
     Thread t = new Thread() {
 
@@ -42,47 +45,43 @@ public class Speler extends Element {
         t.start();
     }
 
-    public void getItem() {
-        //When on the same place as an item. Pick up item.
-    }
+    public void move(String direction) {
 
-    public void shoot(String direction, boolean hasItem) {
-        Raket raket = new Raket(550);
-        if (direction.equals("UP")) {
-            raket.move(direction.toString());
-        } else if (direction.equals("DOWN")) {
-            raket.move(direction.toString());
-        } else if (direction.equals("LEFT")) {
-            raket.move(direction.toString());
-        } else if (direction.equals("RIGHT")) {
-            raket.move(direction.toString());
+        Veld buur = veld.level.getBuuren(veld.veltCordinateY, veld.veltCordinateX, direction);
+        this.direction = direction;
+        System.out.println(buur.getElement());
+
+        if (buur.getElement() == null || buur.getElement().getLoopbaar()) {
+            if (buur.getElement() instanceof Item) {
+                Item i = (Item) buur.getElement();
+                i.pakOp();
+            }
+            veld.setElement(null);
+            buur.setElement(this);
         }
     }
 
-    public void move(String direction) {
+    public void schiet() {
+        if (!lijstRakketen.isEmpty()) {
+            Raket r = lijstRakketen.get(0);
+            veld.setElement(r);
+            r.move(direction);
+            lijstRakketen.remove(0);
+        }
+    }
 
-        veld.getBuuren(veld.getPositieY(), veld.getPositieX());
-
-        if ((veld.buren.get(direction).getElement() == null) || (veld.buren.get(direction).getElement().getLoopbaar())) {
-            if (veld.buren.get(direction).getElement() instanceof Item) {
-                Item i = (Item) veld.buren.get(direction).getElement();
-                i.pakOp();
-            }
-            if (veld.buren.get(direction).getElement() == null) {
-
-            }
-
-            veld.setElement(null);
-            veld.buren.get(direction).setElement(this);
-            (this).setVeld(veld.buren.get(direction));
+    public void setList(Raket r) {
+        for (int i = 0; i < 5; i++) {
+            lijstRakketen.add(r);
         }
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g
+    ) {
 
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g.create();        
+        Graphics2D g2 = (Graphics2D) g.create();
         Image i = new ImageIcon(getClass().getClassLoader().getResource("Images/player.png")).getImage();
         g2.drawImage(i, 0, sizeBorderSpeler, 30, sizeSpeler, null, this);
         g2.dispose();

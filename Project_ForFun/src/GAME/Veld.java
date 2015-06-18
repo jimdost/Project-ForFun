@@ -5,49 +5,41 @@
  */
 package GAME;
 
-
-
 import java.util.HashMap;
 
 /**
  *
  * @author wytze
  */
-public class Veld{
+public class Veld {
 
     int veltCordinateX;
     int veltCordinateY;
-    Veld[][] bord;
-    Element element = null; 
-    HashMap<String, Veld> buren;    
-    
-    Veld() {        
-                 
-    }
+    Element element;
+    Level level;
 
-    protected void getBuuren(int positieY, int positieX){
-                
-     buren = new HashMap<>();     
-     
-     buren.put("UP", bord[positieY - 1][positieX]);
-     buren.put("DOWN", bord[positieY + 1][positieX]);
-     buren.put("LEFT", bord[positieY][positieX - 1]);
-     buren.put("RIGHT", bord[positieY][positieX + 1]);        
+    Veld() {
+
     }
 
     public void setElement(Element element) {
         this.element = element;
+        if (element != null) {
+            element.setVeld(this);
+        } else {
+            this.element = null;
+        }
     }
-        
-    protected Element getElement(){
+
+    public Element getElement() {
         return element;
     }
 
-    protected int getPositieX() {
+    public int getPositieX() {
         return veltCordinateX;
     }
 
-    protected int getPositieY() {
+    public int getPositieY() {
         return veltCordinateY;
     }
 
@@ -57,5 +49,9 @@ public class Veld{
 
     protected void setPositieY(int posY) {
         this.veltCordinateY = posY;
-    }  
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
 }

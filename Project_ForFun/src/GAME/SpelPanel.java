@@ -48,7 +48,7 @@ public final class SpelPanel extends JPanel implements ActionListener {
         revalidate();
     }
 
-    private void DrawLevel() {
+    protected void DrawLevel() {
         int xB = 0;
         int yB = 0;
 
@@ -65,7 +65,29 @@ public final class SpelPanel extends JPanel implements ActionListener {
             xB = 0;
         }
         revalidate();
+        repaint();
     }
+    
+    protected void DrawVeld(Veld v) {
+        int xB = 0;
+        int yB = 0;
+
+        for (Veld[] bord1 : bord) {
+            for (int y = 0; y < bord.length; y++) {
+                if (bord1[y].getElement() != null) {
+                    Veld veld = bord1[y];
+                    veld.getElement().setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
+                    add(veld.getElement());
+                }
+                xB = xB + level.getVeltSize();
+            }
+            yB = yB + level.getVeltSize();
+            xB = 0;
+        }
+        
+        repaint();
+    }
+    
 
     protected void UpdateLevel() {
         int xB = 0;
@@ -73,7 +95,7 @@ public final class SpelPanel extends JPanel implements ActionListener {
 
         for (Veld[] bord1 : bord) {
             for (int y = 0; y < bord.length; y++) {
-                if (bord1[y].getElement() instanceof Speler || bord1[y].getElement() instanceof PadSolved) {
+                if (bord1[y].getElement() instanceof Speler) {
                     Veld veld = bord1[y];
                     veld.getElement().setBounds(xB, yB, level.getVeltSize(), level.getVeltSize());
                     add(veld.getElement());
@@ -91,6 +113,7 @@ public final class SpelPanel extends JPanel implements ActionListener {
     protected void DrawWin() {
 
         removeAll();
+        level.getSpeler().setVisible(false);
 
         Rectangle r = getBounds();
 
@@ -120,6 +143,10 @@ public final class SpelPanel extends JPanel implements ActionListener {
         this.level = level;
     }
 
+    public void setFrame(Frame frame) {
+        this.frame = frame;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -127,8 +154,8 @@ public final class SpelPanel extends JPanel implements ActionListener {
         switch (action) {
             case "next level":                 
                 frame.remove(frame.spel);
-                Frame.levelNr++;
-                frame.createSpelComponents(Frame.levelNr);
+                Frame.setLevelNr(1);
+                frame.setSpelComponents(Frame.levelNr);
                 revalidate();
                 break;
         }

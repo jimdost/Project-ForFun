@@ -14,7 +14,6 @@ import java.awt.Graphics;
 public class Valsspeler extends Item{
     
     private int cheatingAantalStappen = 10;
-    Level level;
 
     public Valsspeler() {       
                 
@@ -31,7 +30,7 @@ public class Valsspeler extends Item{
     @Override
     protected void pakOp() {        
         System.out.println("ValsSpeler");   
-        level.spelpanel.aantalStappen = level.spelpanel.aantalStappen - cheatingAantalStappen;
+        veld.level.spelpanel.aantalStappen = veld.level.spelpanel.aantalStappen - cheatingAantalStappen;
         setVisible(false);
     }
     
